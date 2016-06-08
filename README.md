@@ -7,8 +7,8 @@
 capport                                                  D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: December 8, 2016                                         Google
-                                                            June 6, 2016
+Expires: December 10, 2016                                        Google
+                                                            June 8, 2016
 
 
                                   OWE
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 8, 2016.
+   This Internet-Draft will expire on December 10, 2016.
 
 Copyright Notice
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires December 8, 2016                [Page 1]
+Harkins & Kumari        Expires December 10, 2016               [Page 1]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -76,7 +76,7 @@ Table of Contents
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    6.  Implementation Considerations . . . . . . . . . . . . . . . .   8
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   8
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -111,7 +111,7 @@ Table of Contents
 
 
 
-Harkins & Kumari        Expires December 8, 2016                [Page 2]
+Harkins & Kumari        Expires December 10, 2016               [Page 2]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -132,8 +132,8 @@ Internet-Draft              Abbreviated Title                  June 2016
    to a popular deployment technique-- a network protected using a
    shared, and public PSK that is printed on a sandwich board at the
    entrance, on a chalkboard on the wall, or on a menu.  The PSK is used
-   in a cryptographic handshake defined in [IEEE802.11] called the "4
-   way handshake" to prove knowledge of the PSK and derive traffic
+   in a cryptographic handshake defined in [IEEE802.11] called the
+   "4-way handshake" to prove knowledge of the PSK and derive traffic
    encryption keys for bulk wireless data.
 
    The belief is that this protects the wireless medium from passive
@@ -167,7 +167,7 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 8, 2016                [Page 3]
+Harkins & Kumari        Expires December 10, 2016               [Page 3]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -193,13 +193,14 @@ Internet-Draft              Abbreviated Title                  June 2016
 
    If the network is Open-- no authentication, no encryption-- the
    client has network access immediately after completion of 802.11
-   association.  If the network enforces PSK authentication, the 4WHS is
-   initiated by the AP using the PSK to authenticate the client and
-   derive traffic encryption keys.
+   association.  If the network enforces PSK authentication, the 4-way
+   Handshake is initiated by the AP using the PSK to authenticate the
+   client and derive traffic encryption keys.
 
    To add an opportunistic encryption mode of access to [IEEE802.11] it
    is necessary to perform a Diffie-Hellman key exchange during 802.11
-   authentication and use the resulting pairwise secret with the 4WHS.
+   authentication and use the resulting pairwise secret with the 4-way
+   Handshake.
 
 4.  Opportunistic Wireless Encryption
 
@@ -222,8 +223,7 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-
-Harkins & Kumari        Expires December 8, 2016                [Page 4]
+Harkins & Kumari        Expires December 10, 2016               [Page 4]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -258,9 +258,9 @@ Internet-Draft              Abbreviated Title                  June 2016
    |          |        |     Encryption    |             |             |
    +----------+--------+-------------------+-------------+-------------+
 
-                   where ANA-1 is assigned by IEEE IANA.
-
                              Table 1: OWE AKM
+
+   where ANA-1 is assigned by IEEE 802.11 ANA.
 
    Once a client discovers an OWE-compliant AP, it performs "Open
    System" 802.11 authentication as defined in [IEEE802.11], it then
@@ -279,7 +279,7 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 8, 2016                [Page 5]
+Harkins & Kumari        Expires December 10, 2016               [Page 5]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -293,20 +293,23 @@ Internet-Draft              Abbreviated Title                  June 2016
       | Element ID |  Length  |     ID     |   element-specific     |
       |            |          |  Extension |         data           |
       +------------+----------+------------+---------+--------------+
-      |    255     | variable |   TBD2     | group   |  public key  |
+      |    255     | variable |   ANA-2    | group   |  public key  |
       +------------+----------+------------+---------+--------------+
 
                                  Figure 1
 
    where
 
-   o  TBD2 is assigned by IEEE 802.11 ANA;
+   o  ANA-2 is assigned by IEEE 802.11 ANA;
 
-   o  group is an unsigned two-octet integer in little-endian format
-      representing a group defined in the IANA registry;
+   o  group is an unsigned two-octet integer defined in [IKE-IANA], in
+      little-endian format, that identifies a domain parameter set;
 
    o  public key is an octet string representing the Diffie-Hellman
-      public key encoded according to BAR; and,
+      public key encoded according to section 2.3.3 (Elliptic Curve to
+      Octet String Conversion) or 2.3.5 (Field Element to Octet String
+      Conversion) of [SEC1] depending on whether the public key is ECC
+      or FFC, respectively; and,
 
    o  Element ID, Length, and ID Extension are all single octet integers
       in little-endian format.
@@ -328,17 +331,17 @@ Internet-Draft              Abbreviated Title                  June 2016
    coordinates, excluding the point at infinity.  For FFC, elements are
    checked that they are between one (1) and one (1) less than the
    prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
-   Diffie-Hellman keys MUST result in unsuccessful association and a
-   failure of OWE.
 
 
 
 
-
-Harkins & Kumari        Expires December 8, 2016                [Page 6]
+Harkins & Kumari        Expires December 10, 2016               [Page 6]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
+
+   Diffie-Hellman keys MUST result in unsuccessful association and a
+   failure of OWE.
 
 4.4.  OWE Post-Association
 
@@ -352,12 +355,13 @@ Internet-Draft              Abbreviated Title                  June 2016
 
       prk = HKDF-extract(NULL, z)
 
-      PMK = HKDF-expand(prk, "OWE Key Generation", 256)
+      PMK = HKDF-expand(prk, "OWE Key Generation", n)
 
-   Where HKDF-expand() and HKDF-extract() are defined in [RFC5869] and
-   NULL indicates the "salt-less" invocation of HKDF, using the hash
-   algorithm defined in section Section 4.1. z and prk are irretrievably
-   deleted once the PMK has been generated.
+   Where HKDF-expand() and HKDF-extract() are defined in [RFC5869], NULL
+   indicates the "salt-less" invocation of HKDF using the hash algorithm
+   defined in section Section 4.1, and n is the bitlength of the digest
+   produced by that hash algorithm. z and prk are irretrievably deleted
+   once the PMK has been generated.
 
    The PMKID is generated by hashing the two Diffie-Hellman public keys
    (the data, as sent and received, from the "public key" portion of the
@@ -384,17 +388,17 @@ Internet-Draft              Abbreviated Title                  June 2016
    expensive authentication.  A client indicates its desire to do "PMK
    caching" by including the identifying PMKID in its 802.11 association
    request.  If an AP has cached the PMK identified by that PMKID, it
-   includes the PMKID in its 802.11 association response, otherwise it
-   ignores the PMKID and proceeds with normal 802.11 association.  OWE
-   supports the notion of "PMK caching".
 
 
 
-
-Harkins & Kumari        Expires December 8, 2016                [Page 7]
+Harkins & Kumari        Expires December 10, 2016               [Page 7]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
+
+   includes the PMKID in its 802.11 association response, otherwise it
+   ignores the PMKID and proceeds with normal 802.11 association.  OWE
+   supports the notion of "PMK caching".
 
    Since "PMK caching" is indicated in the same frame as the Diffie-
    Hellman Parameter element is passed, a client wishing to do "PMK
@@ -432,7 +436,29 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 7.  Security Considerations
 
-   There are many security issues to consider...
+   Opportunistic encryption does not provide authentication.  The client
+   will have no authenticated identity for the Access Point, and vice
+   versa.  They will share pairwise traffic encryption keys and have a
+   cryptographic assurance that a frame claimed to be from the peer is
+   actually from the peer and was not modified in flight.
+
+   OWE is susceptible to an active attack in which an adversary
+   impersonates an Access Point, induces a client to connect to it via
+
+
+
+Harkins & Kumari        Expires December 10, 2016               [Page 8]
+
+Internet-Draft              Abbreviated Title                  June 2016
+
+
+   OWE while it makes a connection to the legitimate Access Point.  In
+   this particular attack, the adversary is able to inspect, modify, and
+   forge any data between the client and legitimate Access Point.
+
+   OWE is not a replacement for any authentication protocol specified in
+   [IEEE802.11] and is not intended to be used when an alternative that
+   provides real authentication is available.
 
 8.  Normative References
 
@@ -443,15 +469,6 @@ Internet-Draft              Abbreviated Title                  June 2016
               (MAC) and Physical Layer (PHY) Specifications IEEE Std
               802.11-2012, 2012.
 
-
-
-
-
-Harkins & Kumari        Expires December 8, 2016                [Page 8]
-
-Internet-Draft              Abbreviated Title                  June 2016
-
-
    [IKE-IANA]
               IANA, "Internet Key Exchange (version 2) Parameters",
               Transform Type 4: Diffie-Hellman Group Transform IDs,
@@ -459,14 +476,15 @@ Internet-Draft              Abbreviated Title                  June 2016
               ikev2-parameters.xhtml#ikev2-parameters-8>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
-              RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
               RFC5869, May 2010,
               <http://www.rfc-editor.org/info/rfc5869>.
+
+   [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
+              2009.
 
 Authors' Addresses
 
@@ -478,6 +496,16 @@ Authors' Addresses
 
    Phone: +1 415 555 1212
    Email: dharkins@arubanetworks.com
+
+
+
+
+
+
+
+Harkins & Kumari        Expires December 10, 2016               [Page 9]
+
+Internet-Draft              Abbreviated Title                  June 2016
 
 
    Warren Kumari (editor)
@@ -503,5 +531,33 @@ Authors' Addresses
 
 
 
-Harkins & Kumari        Expires December 8, 2016                [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Harkins & Kumari        Expires December 10, 2016              [Page 10]
 ```
