@@ -359,6 +359,12 @@
         indicates the OWE AKM in the RSN element but does not have not a
         Diffie-Hellman Parameter element.</t>
 
+	<t>
+	  For interoperability purposes, a compliant implementation MUST
+	  support group nineteen (19), a 256-bit elliptic curve group.
+	  TODO: what to do if the AP doesn't like the client's chosen group?
+	</t>
+
         <t>Received Diffie-Hellman Parameter Elements are checked for validity
         upon receipt. For ECC, elements are checked by verifying that equation
         for the curve is correct for the given x- and y- coordinates,

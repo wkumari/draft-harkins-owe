@@ -5,8 +5,8 @@
 capport                                                  D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: December 10, 2016                                        Google
-                                                            June 8, 2016
+Expires: December 15, 2016                                        Google
+                                                           June 13, 2016
 
 
                                   OWE
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 10, 2016.
+   This Internet-Draft will expire on December 15, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires December 10, 2016               [Page 1]
+Harkins & Kumari        Expires December 15, 2016               [Page 1]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Harkins & Kumari        Expires December 10, 2016               [Page 2]
+Harkins & Kumari        Expires December 15, 2016               [Page 2]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -165,7 +165,7 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 10, 2016               [Page 3]
+Harkins & Kumari        Expires December 15, 2016               [Page 3]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -221,7 +221,7 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 10, 2016               [Page 4]
+Harkins & Kumari        Expires December 15, 2016               [Page 4]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -277,7 +277,7 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 10, 2016               [Page 5]
+Harkins & Kumari        Expires December 15, 2016               [Page 5]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -323,21 +323,24 @@ Internet-Draft              Abbreviated Title                  June 2016
    AKM in the RSN element but does not have not a Diffie-Hellman
    Parameter element.
 
+   For interoperability purposes, a compliant implementation MUST
+   support group nineteen (19), a 256-bit elliptic curve group.  TODO:
+   what to do if the AP doesn't like the client's chosen group?
+
    Received Diffie-Hellman Parameter Elements are checked for validity
    upon receipt.  For ECC, elements are checked by verifying that
    equation for the curve is correct for the given x- and y-
-   coordinates, excluding the point at infinity.  For FFC, elements are
-   checked that they are between one (1) and one (1) less than the
-   prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
 
 
 
-
-Harkins & Kumari        Expires December 10, 2016               [Page 6]
+Harkins & Kumari        Expires December 15, 2016               [Page 6]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
 
+   coordinates, excluding the point at infinity.  For FFC, elements are
+   checked that they are between one (1) and one (1) less than the
+   prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
    Diffie-Hellman keys MUST result in unsuccessful association and a
    failure of OWE.
 
@@ -383,17 +386,17 @@ Internet-Draft              Abbreviated Title                  June 2016
    [IEEE802.11] defines "PMK caching" where a client and access point
    can cache a PMK for a certain period of time and reuse it with the
    4-way Handshake after subsequent associations to bypass potentially
-   expensive authentication.  A client indicates its desire to do "PMK
-   caching" by including the identifying PMKID in its 802.11 association
-   request.  If an AP has cached the PMK identified by that PMKID, it
 
 
 
-Harkins & Kumari        Expires December 10, 2016               [Page 7]
+Harkins & Kumari        Expires December 15, 2016               [Page 7]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
 
+   expensive authentication.  A client indicates its desire to do "PMK
+   caching" by including the identifying PMKID in its 802.11 association
+   request.  If an AP has cached the PMK identified by that PMKID, it
    includes the PMKID in its 802.11 association response, otherwise it
    ignores the PMKID and proceeds with normal 802.11 association.  OWE
    supports the notion of "PMK caching".
@@ -440,16 +443,15 @@ Internet-Draft              Abbreviated Title                  June 2016
    cryptographic assurance that a frame claimed to be from the peer is
    actually from the peer and was not modified in flight.
 
-   OWE is susceptible to an active attack in which an adversary
-   impersonates an Access Point, induces a client to connect to it via
 
 
-
-Harkins & Kumari        Expires December 10, 2016               [Page 8]
+Harkins & Kumari        Expires December 15, 2016               [Page 8]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
 
+   OWE is susceptible to an active attack in which an adversary
+   impersonates an Access Point, induces a client to connect to it via
    OWE while it makes a connection to the legitimate Access Point.  In
    this particular attack, the adversary is able to inspect, modify, and
    forge any data between the client and legitimate Access Point.
@@ -499,9 +501,7 @@ Authors' Addresses
 
 
 
-
-
-Harkins & Kumari        Expires December 10, 2016               [Page 9]
+Harkins & Kumari        Expires December 15, 2016               [Page 9]
 
 Internet-Draft              Abbreviated Title                  June 2016
 
@@ -557,4 +557,4 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 10, 2016              [Page 10]
+Harkins & Kumari        Expires December 15, 2016              [Page 10]
