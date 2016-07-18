@@ -8,6 +8,7 @@
 <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
 <!ENTITY RFC5869 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5869.xml">
+<!ENTITY RFC7435 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7435.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
@@ -133,9 +134,9 @@
 
   <middle>
     <section title="Introduction">
-      <t>This memo describes a mode of opportunistic wireless encryption for
-      802.11 -- OWE -- that provides encryption of the wireless medium but no
-      authentication.</t>
+      <t>This memo describes a mode of opportunistic encryption
+      <xref target="RFC7435"/> for 802.11 -- OWE -- that provides encryption
+      of the wireless medium but no authentication.</t>
 
       <section title="Requirements Language">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -502,6 +503,8 @@
 
       &RFC5869;
 
+      &RFC7435;
+      
       <reference anchor="SEC1">
 	<front>
 	  <title>Elliptic Curve Cryptography</title>
