@@ -7,8 +7,8 @@
 capport                                                  D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: December 15, 2016                                        Google
-                                                           June 13, 2016
+Expires: January 26, 2017                                         Google
+                                                           July 25, 2016
 
 
                                   OWE
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 15, 2016.
+   This Internet-Draft will expire on January 26, 2017.
 
 Copyright Notice
 
@@ -55,9 +55,9 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 1]
+Harkins & Kumari        Expires January 26, 2017                [Page 1]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
 Table of Contents
@@ -81,7 +81,7 @@ Table of Contents
 
 1.  Introduction
 
-   This memo describes a mode of opportunistic wireless encryption for
+   This memo describes a mode of opportunistic encryption [RFC7435] for
    802.11 -- OWE -- that provides encryption of the wireless medium but
    no authentication.
 
@@ -111,9 +111,9 @@ Table of Contents
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 2]
+Harkins & Kumari        Expires January 26, 2017                [Page 2]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    a = len(b)
@@ -167,9 +167,9 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 3]
+Harkins & Kumari        Expires January 26, 2017                [Page 3]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    security policy governing access, which symmetric ciphers it uses for
@@ -223,9 +223,9 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 4]
+Harkins & Kumari        Expires January 26, 2017                [Page 4]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    o  SHA-512: when 384 < len(p)
@@ -279,9 +279,9 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 5]
+Harkins & Kumari        Expires January 26, 2017                [Page 5]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    public key in the 802.11 associate request and the AP adds his public
@@ -335,9 +335,9 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 6]
+Harkins & Kumari        Expires January 26, 2017                [Page 6]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    coordinates, excluding the point at infinity.  For FFC, elements are
@@ -391,9 +391,9 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 7]
+Harkins & Kumari        Expires January 26, 2017                [Page 7]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    expensive authentication.  A client indicates its desire to do "PMK
@@ -447,9 +447,9 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-Harkins & Kumari        Expires December 15, 2016               [Page 8]
+Harkins & Kumari        Expires January 26, 2017                [Page 8]
 
-Internet-Draft              Abbreviated Title                  June 2016
+Internet-Draft              Abbreviated Title                  July 2016
 
 
    OWE is susceptible to an active attack in which an adversary
@@ -485,10 +485,28 @@ Internet-Draft              Abbreviated Title                  June 2016
               RFC5869, May 2010,
               <http://www.rfc-editor.org/info/rfc5869>.
 
+   [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
+              Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
+              December 2014, <http://www.rfc-editor.org/info/rfc7435>.
+
    [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
               2009.
 
 Authors' Addresses
+
+
+
+
+
+
+
+
+
+
+Harkins & Kumari        Expires January 26, 2017                [Page 9]
+
+Internet-Draft              Abbreviated Title                  July 2016
+
 
    Dan Harkins (editor)
    HP Enterprise
@@ -498,14 +516,6 @@ Authors' Addresses
 
    Phone: +1 415 555 1212
    Email: dharkins@arubanetworks.com
-
-
-
-
-
-Harkins & Kumari        Expires December 15, 2016               [Page 9]
-
-Internet-Draft              Abbreviated Title                  June 2016
 
 
    Warren Kumari (editor)
@@ -549,15 +559,5 @@ Internet-Draft              Abbreviated Title                  June 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari        Expires December 15, 2016              [Page 10]
+Harkins & Kumari        Expires January 26, 2017               [Page 10]
 ```
