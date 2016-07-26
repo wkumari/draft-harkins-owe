@@ -11,7 +11,7 @@ Expires: January 26, 2017                                         Google
                                                            July 25, 2016
 
 
-                                  OWE
+                   Opportunistic Wireless Encryption
                           draft-harkins-owe-00
 
 Abstract
@@ -57,7 +57,7 @@ Copyright Notice
 
 Harkins & Kumari        Expires January 26, 2017                [Page 1]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 Table of Contents
@@ -113,7 +113,7 @@ Table of Contents
 
 Harkins & Kumari        Expires January 26, 2017                [Page 2]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    a = len(b)
@@ -169,7 +169,7 @@ Internet-Draft              Abbreviated Title                  July 2016
 
 Harkins & Kumari        Expires January 26, 2017                [Page 3]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    security policy governing access, which symmetric ciphers it uses for
@@ -225,7 +225,7 @@ Internet-Draft              Abbreviated Title                  July 2016
 
 Harkins & Kumari        Expires January 26, 2017                [Page 4]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    o  SHA-512: when 384 < len(p)
@@ -281,7 +281,7 @@ Internet-Draft              Abbreviated Title                  July 2016
 
 Harkins & Kumari        Expires January 26, 2017                [Page 5]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    public key in the 802.11 associate request and the AP adds his public
@@ -337,7 +337,7 @@ Internet-Draft              Abbreviated Title                  July 2016
 
 Harkins & Kumari        Expires January 26, 2017                [Page 6]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    coordinates, excluding the point at infinity.  For FFC, elements are
@@ -393,7 +393,7 @@ Internet-Draft              Abbreviated Title                  July 2016
 
 Harkins & Kumari        Expires January 26, 2017                [Page 7]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    expensive authentication.  A client indicates its desire to do "PMK
@@ -449,7 +449,7 @@ Internet-Draft              Abbreviated Title                  July 2016
 
 Harkins & Kumari        Expires January 26, 2017                [Page 8]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    OWE is susceptible to an active attack in which an adversary
@@ -505,7 +505,7 @@ Authors' Addresses
 
 Harkins & Kumari        Expires January 26, 2017                [Page 9]
 
-Internet-Draft              Abbreviated Title                  July 2016
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
    Dan Harkins (editor)
