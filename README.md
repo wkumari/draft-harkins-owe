@@ -12,15 +12,18 @@ Expires: January 28, 2017                                         Google
 
 
                    Opportunistic Wireless Encryption
-                          draft-harkins-owe-01
+                          draft-harkins-owe-02
 
 Abstract
 
    This memo specifies an extension to IEEE Std 802.11 to provide for
    opportunistic (unauthenticated) encryption to the wireless media.
 
-   [ Editor note: RFC Editor, please remove anything of the form "[Ed:
-   something]" or "[Note: something]" before publication. ]
+   [ Ed note: Text inside square brackets ([]) is additional background
+   information, answers to frequently asked questions, general musings,
+   etc.  They will be removed before publication.  This document is
+   being collaborated on in Github at: https://github.com/wkumari/draft-
+   harkins-owe.  The authors (gratefully) accept pull requests. ]
 
 Status of This Memo
 
@@ -49,9 +52,6 @@ Copyright Notice
    (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-
 
 
 
@@ -60,6 +60,8 @@ Harkins & Kumari        Expires January 28, 2017                [Page 1]
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -106,8 +108,6 @@ Table of Contents
        function, just returning the element itself.
 
    Z = DH(x,Y)
-       for an elliptic curve DH(x,Y) is the multiplication of point Y by
-       the scalar value x creating a point on the curve Z; for finite
 
 
 
@@ -116,6 +116,8 @@ Harkins & Kumari        Expires January 28, 2017                [Page 2]
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
+       for an elliptic curve DH(x,Y) is the multiplication of point Y by
+       the scalar value x creating a point on the curve Z; for finite
        field cryptography DH(x,Y) is expontiation of element Y to the
        power of x (implied modulo a field defining prime, p) resulting
        in an element Z.
@@ -126,13 +128,15 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 2.  Background
 
    Internet access has become an expected service at many locations -
-   for example, coffeeshops, airports and hotels.  In many cases, this
-   is offered over "Open" (unencrypted) wireless networks.  [Ed: An
-   example of this is the "ietf-hotel" SSID provides at IETF meeting
-   hotels.]  Users should always use a VPN, and should only browse TLS
-   protected sites, but in many cases they do not.  This leaves their
-   traffic vulnerable to pervasive monitors, and attackers with e.g
-   wireshark in the next room.
+   for example, coffee shops, airports and hotels.  In many cases, this
+   is offered over "Open" (unencrypted) wireless networks, because
+   distributing a passphrase (or using other authentication solutions)
+   is not convenient or realistic.  Ideally, users would always use a
+   VPN when using an untrusted network, but often they don't.  This
+   leaves their traffic vulnerable to sniffing attacks, for example from
+   someone in the adjacent hotel room running Wireshark, pervasive
+   monitors, etc.  [Ed note: The ietf-hotel SSID is an example of an
+   open wifi network likely familiar to most readers. ]
 
    In addition, many businesses (for example, coffee shops and bars)
    offer free Wi-Fi as an inducement to customers to enter and remain in
@@ -159,11 +163,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    machine and cause them to go through the 4-way Handshake again
    thereby allowing the passive attacker to determine the traffic keys.
 
-   Basically, this shared and public PSK mode of access is as bad as an
-   open and unencrypted network.  [TODO: Explain trade offs; shared PSK
-   means the attacker has to be active and could provide a false sense
-   of security.]  With OWE, the client and AP, would perform a Diffie-
-   Hellman key exchange during the access procedure and use the
+
 
 
 
@@ -172,6 +172,11 @@ Harkins & Kumari        Expires January 28, 2017                [Page 3]
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
+   Basically, this shared and public PSK mode of access is as bad as an
+   open and unencrypted network.  [TODO: Explain trade offs; shared PSK
+   means the attacker has to be active and could provide a false sense
+   of security.]  With OWE, the client and AP, would perform a Diffie-
+   Hellman key exchange during the access procedure and use the
    resulting pairwise secret with the 4-way Handshake, instead of using
    a shared and public PSK in the 4-way Handshake.
 
@@ -215,11 +220,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    is necessary to perform a Diffie-Hellman key exchange during 802.11
    authentication and use the resulting pairwise secret with the 4-way
    Handshake.
-
-
-
-
-
 
 
 
@@ -552,7 +552,7 @@ Appendix A.  Changes / Author Notes.
 
       Editorial, title change.
 
-
+   -01 to -02:
 
 
 
@@ -563,6 +563,10 @@ Harkins & Kumari        Expires January 28, 2017               [Page 10]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
+
+      Stressed the use of this as an alternative to "Open", not PSK.
+      The PSK case is more interesting to discuss, but Open is more
+      widely applicable.
 
 Authors' Addresses
 
@@ -584,10 +588,6 @@ Authors' Addresses
 
    Phone: +1 408 555 1212
    Email: warren@kumari.net
-
-
-
-
 
 
 

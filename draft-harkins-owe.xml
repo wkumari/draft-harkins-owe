@@ -35,23 +35,9 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-01" ipr="trust200902">
-  <!-- category values: std, bcp, info, exp, and historic
-     ipr values: full3667, noModification3667, noDerivatives3667
-     you can add the attributes updates="NNNN" and obsoletes="NNNN" 
-     they will automatically be output with "(if approved)" -->
-
-  <!-- ***** FRONT MATTER ***** -->
-
+<rfc category="info" docName="draft-harkins-owe-02" ipr="trust200902">
   <front>
-    <!-- The abbreviated title is used in the page header - it is only necessary if the 
-         full title is longer than 39 characters -->
-
     <title>Opportunistic Wireless Encryption</title>
-
-    <!-- add 'role="editor"' below for the editors if appropriate -->
-
-    <!-- Another author who claims to be an editor -->
 
     <author fullname="Dan Harkins" initials="D.H." role="editor"
             surname="Harkins">
@@ -101,35 +87,20 @@
 
     <date year="2016"/>
 
-    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
-         in the current day for you. If only the current year is specified, xml2rfc will fill 
-	 in the current day and month for you. If the year is not the current one, it is 
-	 necessary to specify at least a month (xml2rfc assumes day="1" if not specified for the 
-	 purpose of calculating the expiry date).  With drafts it is normally sufficient to 
-	 specify just the year. -->
-
-    <!-- Meta-data Declarations -->
-
     <area>ART</area>
 
-    <!-- WG name at the upperleft corner of the doc,
-         IETF is fine for individual submissions.  
-	 If this element is not present, the default is "Network Working Group",
-         which is used by the RFC Editor as a nod to the history of the IETF. -->
-
     <keyword>opportunistic encryption wireless</keyword>
-
-    <!-- Keywords will be incorporated into HTML output
-         files in a meta tag but they have no effect on text or nroff
-         output. If you submit your draft to the RFC Editor, the
-         keywords will be used for the search engine. -->
 
     <abstract>
       <t>This memo specifies an extension to IEEE Std 802.11 to provide for
       opportunistic (unauthenticated) encryption to the wireless media.</t>
 
-      <t>[ Editor note: RFC Editor, please remove anything of the form "[Ed:
-      something]" or "[Note: something]" before publication. ] </t>
+      <t>[ Ed note: Text inside square brackets ([]) is additional background
+      information, answers to frequently asked questions, general musings,
+      etc. They will be removed before publication. This document is being
+      collaborated on in Github at:
+      https://github.com/wkumari/draft-harkins-owe. The authors (gratefully)
+      accept pull requests. ]</t>
     </abstract>
   </front>
 
@@ -169,13 +140,15 @@
 
     <section anchor="background" title="Background">
       <t>Internet access has become an expected service at many locations -
-      for example, coffeeshops, airports and hotels. In many cases, this is
-      offered over "Open" (unencrypted) wireless networks. [Ed: An example of
-      this is the "ietf-hotel" SSID provides at IETF meeting hotels.] Users
-      should always use a VPN, and should only browse TLS protected sites, but
-      in many cases they do not. This leaves their traffic vulnerable to
-      pervasive monitors, and attackers with e.g wireshark in the next room.
-      </t>
+      for example, coffee shops, airports and hotels. In many cases, this is
+      offered over "Open" (unencrypted) wireless networks, because
+      distributing a passphrase (or using other authentication solutions) is
+      not convenient or realistic. Ideally, users would always use a VPN when
+      using an untrusted network, but often they don't. This leaves their
+      traffic vulnerable to sniffing attacks, for example from someone in the
+      adjacent hotel room running Wireshark, pervasive monitors, etc. [Ed
+      note: The ietf-hotel SSID is an example of an open wifi network likely
+      familiar to most readers. ] </t>
 
       <t>In addition, many businesses (for example, coffee shops and bars)
       offer free Wi-Fi as an inducement to customers to enter and remain in
@@ -490,17 +463,6 @@
   <back>
     <!-- References split into informative and normative -->
 
-    <!-- There are 2 ways to insert reference entries from the citation libraries:
-     1. define an ENTITY at the top, and use "ampersand character"RFC2629; here (as shown)
-     2. simply use a PI "less than character"?rfc include="reference.RFC.2119.xml"?> here
-        (for I-Ds: include="reference.I-D.narten-iana-considerations-rfc2434bis.xml")
-
-     Both are cited textually in the same manner: by using xref elements.
-     If you use the PI option, xml2rfc will, by default, try to find included files in the same
-     directory as the including file. You can also define the XML_LIBRARY environment variable
-     with a value containing a set of directories to search.  These can be either in the local
-     filing system or remote ones accessed by http (http://domain/dir/... ).-->
-
     <references title="Normative References">
       <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
 
@@ -566,8 +528,10 @@
           <t/>
         </list>-00 to -01:<list>
           <t>Editorial, title change.</t>
-
-          <t/>
+        </list>-01 to -02:<list>
+          <t>Stressed the use of this as an alternative to "Open", not PSK.
+          The PSK case is more interesting to discuss, but Open is more widely
+          applicable. </t>
         </list></t>
     </section>
   </back>
