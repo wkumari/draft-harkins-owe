@@ -127,6 +127,9 @@
     <abstract>
       <t>This memo specifies an extension to IEEE Std 802.11 to provide for
       opportunistic (unauthenticated) encryption to the wireless media.</t>
+
+      <t>[ Editor note: RFC Editor, please remove anything of the form "[Ed:
+      something]" or "[Note: something]" before publication. ] </t>
     </abstract>
   </front>
 
@@ -165,19 +168,29 @@
     </section>
 
     <section anchor="background" title="Background">
-      <t>Many businesses (for example, coffee shops and bars) offer free Wi-Fi
-      as an inducement to customers to enter and remain in the premises. Many
-      customers will use the availability of free Wi-Fi as a deciding factor
-      in which business to patronize. Since these businesses are not Internet
-      service providers, they are often unwilling and/or unqualified to
-      perform complex configuration on their network. In addition, customers
-      are generally unwilling to do complicated provisioning on their devices
-      just to obtain free Wi-Fi. This leads to a popular deployment technique
-      -- a network protected using a shared and public PSK that is printed on
-      a sandwich board at the entrance, on a chalkboard on the wall, or on a
-      menu. The PSK is used in a cryptographic handshake defined in <xref
-      target="IEEE802.11"/> called the "4-way handshake" to prove knowledge of
-      the PSK and derive traffic encryption keys for bulk wireless data.</t>
+      <t>Internet access has become an expected service at many locations -
+      for example, coffeeshops, airports and hotels. In many cases, this is
+      offered over "Open" (unencrypted) wireless networks. [Ed: An example of
+      this is the "ietf-hotel" SSID provides at IETF meeting hotels.] Users
+      should always use a VPN, and should only browse TLS protected sites, but
+      in many cases they do not. This leaves their traffic vulnerable to
+      pervasive monitors, and attackers with e.g wireshark in the next room.
+      </t>
+
+      <t>In addition, many businesses (for example, coffee shops and bars)
+      offer free Wi-Fi as an inducement to customers to enter and remain in
+      the premises. Many customers will use the availability of free Wi-Fi as
+      a deciding factor in which business to patronize. Since these businesses
+      are not Internet service providers, they are often unwilling and/or
+      unqualified to perform complex configuration on their network. In
+      addition, customers are generally unwilling to do complicated
+      provisioning on their devices just to obtain free Wi-Fi. This leads to a
+      popular deployment technique -- a network protected using a shared and
+      public PSK that is printed on a sandwich board at the entrance, on a
+      chalkboard on the wall, or on a menu. The PSK is used in a cryptographic
+      handshake defined in <xref target="IEEE802.11"/> called the "4-way
+      handshake" to prove knowledge of the PSK and derive traffic encryption
+      keys for bulk wireless data.</t>
 
       <t>The belief is that this protects the wireless medium from passive
       sniffing and simple attacks. That belief is erroneous. Since the PSK is
