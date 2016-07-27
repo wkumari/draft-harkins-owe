@@ -35,7 +35,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-00" ipr="trust200902">
+<rfc category="info" docName="draft-harkins-owe-01" ipr="trust200902">
   <!-- category values: std, bcp, info, exp, and historic
      ipr values: full3667, noModification3667, noDerivatives3667
      you can add the attributes updates="NNNN" and obsoletes="NNNN" 
@@ -112,8 +112,6 @@
 
     <area>ART</area>
 
-    <workgroup>capport</workgroup>
-
     <!-- WG name at the upperleft corner of the doc,
          IETF is fine for individual submissions.  
 	 If this element is not present, the default is "Network Working Group",
@@ -134,9 +132,9 @@
 
   <middle>
     <section title="Introduction">
-      <t>This memo describes a mode of opportunistic encryption
-      <xref target="RFC7435"/> for 802.11 -- OWE -- that provides encryption
-      of the wireless medium but no authentication.</t>
+      <t>This memo describes a mode of opportunistic encryption <xref
+      target="RFC7435"/> for 802.11 -- OWE -- that provides encryption of the
+      wireless medium but no authentication.</t>
 
       <section title="Requirements Language">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -167,16 +165,16 @@
     </section>
 
     <section anchor="background" title="Background">
-      <t>Many businesses-- bars, coffee shops, etc.-- offer free Wi-Fi as an
-      inducement to customers to enter and remain in the premises. Many
+      <t>Many businesses (for exmaple, coffee shops and bars) offer free Wi-Fi
+      as an inducement to customers to enter and remain in the premises. Many
       customers will use the availability of free Wi-Fi as a deciding factor
       in which business to patronize. Since these businesses are not Internet
-      service providers, they are not willing and/or not qualified to perform
-      complex configuration on their network. In addition, customers are
-      generally unwilling to do complicated provisioning on their devices just
-      to obtain free Wi-Fi. This leads to a popular deployment technique-- a
-      network protected using a shared, and public PSK that is printed on a
-      sandwich board at the entrance, on a chalkboard on the wall, or on a
+      service providers, they are often unwilling and/or unqualified to
+      perform complex configuration on their network. In addition, customers
+      are generally unwilling to do complicated provisioning on their devices
+      just to obtain free Wi-Fi. This leads to a popular deployment technique
+      -- a network protected using a shared, and public PSK that is printed on
+      a sandwich board at the entrance, on a chalkboard on the wall, or on a
       menu. The PSK is used in a cryptographic handshake defined in <xref
       target="IEEE802.11"/> called the "4-way handshake" to prove knowledge of
       the PSK and derive traffic encryption keys for bulk wireless data.</t>
@@ -295,11 +293,10 @@
           <c>This document</c>
 
           <c><xref target="RFC5869"/></c>
-
         </texttable>
-        <t>
-	  where ANA-1 is assigned by IEEE 802.11 ANA.
-	</t>
+
+        <t>where ANA-1 is assigned by IEEE 802.11 ANA.</t>
+
         <t>Once a client discovers an OWE-compliant AP, it performs "Open
         System" 802.11 authentication as defined in <xref
         target="IEEE802.11"/>, it then proceeds to 802.11 association.</t>
@@ -334,16 +331,15 @@
         <t>where <list style="symbols">
             <t>ANA-2 is assigned by IEEE 802.11 ANA;</t>
 
-            <t>group is an unsigned two-octet integer defined in
-	    <xref target="IKE-IANA"/>, in little-endian format, that
-            identifies a domain parameter set;
-	    </t>
+            <t>group is an unsigned two-octet integer defined in <xref
+            target="IKE-IANA"/>, in little-endian format, that identifies a
+            domain parameter set;</t>
 
             <t>public key is an octet string representing the Diffie-Hellman
             public key encoded according to section 2.3.3 (Elliptic Curve to
-	    Octet String Conversion) or 2.3.5 (Field Element to Octet String
-	    Conversion) of <xref target="SEC1"/> depending on whether the
-	    public key is ECC or FFC, respectively; and,</t>
+            Octet String Conversion) or 2.3.5 (Field Element to Octet String
+            Conversion) of <xref target="SEC1"/> depending on whether the
+            public key is ECC or FFC, respectively; and,</t>
 
             <t>Element ID, Length, and ID Extension are all single octet
             integers in little-endian format.</t>
@@ -360,11 +356,9 @@
         indicates the OWE AKM in the RSN element but does not have not a
         Diffie-Hellman Parameter element.</t>
 
-	<t>
-	  For interoperability purposes, a compliant implementation MUST
-	  support group nineteen (19), a 256-bit elliptic curve group.
-	  TODO: what to do if the AP doesn't like the client's chosen group?
-	</t>
+        <t>For interoperability purposes, a compliant implementation MUST
+        support group nineteen (19), a 256-bit elliptic curve group. TODO:
+        what to do if the AP doesn't like the client's chosen group?</t>
 
         <t>Received Diffie-Hellman Parameter Elements are checked for validity
         upon receipt. For ECC, elements are checked by verifying that equation
@@ -387,11 +381,11 @@
 
             <t>PMK = HKDF-expand(prk, "OWE Key Generation", n)</t>
           </list> Where HKDF-expand() and HKDF-extract() are defined in <xref
-        target="RFC5869"/>, NULL indicates the "salt-less" invocation of
-        HKDF using the hash algorithm defined in section <xref
-        target="crypto"/>, and n is the bitlength of the digest produced by
-	that hash algorithm. z and prk are irretrievably deleted once the PMK
-        has been generated.</t>
+        target="RFC5869"/>, NULL indicates the "salt-less" invocation of HKDF
+        using the hash algorithm defined in section <xref target="crypto"/>,
+        and n is the bitlength of the digest produced by that hash algorithm.
+        z and prk are irretrievably deleted once the PMK has been
+        generated.</t>
 
         <t>The PMKID is generated by hashing the two Diffie-Hellman public
         keys (the data, as sent and received, from the "public key" portion of
@@ -458,25 +452,21 @@
     </section>
 
     <section anchor="Security" title="Security Considerations">
-      <t>
-	Opportunistic encryption does not provide authentication. The client
-	will have no authenticated identity for the Access Point, and vice
-	versa. They will share pairwise traffic encryption keys and have a
-	cryptographic assurance that a frame claimed to be from the peer is
-	actually from the peer and was not modified in flight. 
-      </t>
-      <t>
-	OWE is susceptible to an active attack in which an adversary
-	impersonates an Access Point, induces a client to connect to it via
-	OWE while it makes a connection to the legitimate Access Point.
-	In this particular attack, the adversary is able to inspect, modify,
-	and forge any data between the client and legitimate Access Point.
-      </t>
-      <t>
-	OWE is not a replacement for any authentication protocol specified in
-	<xref target="IEEE802.11"/> and is not intended to be used when an
-	alternative that provides real authentication is available.
-      </t>
+      <t>Opportunistic encryption does not provide authentication. The client
+      will have no authenticated identity for the Access Point, and vice
+      versa. They will share pairwise traffic encryption keys and have a
+      cryptographic assurance that a frame claimed to be from the peer is
+      actually from the peer and was not modified in flight.</t>
+
+      <t>OWE is susceptible to an active attack in which an adversary
+      impersonates an Access Point, induces a client to connect to it via OWE
+      while it makes a connection to the legitimate Access Point. In this
+      particular attack, the adversary is able to inspect, modify, and forge
+      any data between the client and legitimate Access Point.</t>
+
+      <t>OWE is not a replacement for any authentication protocol specified in
+      <xref target="IEEE802.11"/> and is not intended to be used when an
+      alternative that provides real authentication is available.</t>
     </section>
   </middle>
 
@@ -504,16 +494,19 @@
       &RFC5869;
 
       &RFC7435;
-      
+
       <reference anchor="SEC1">
-	<front>
-	  <title>Elliptic Curve Cryptography</title>
-	  <author initials="D" surname="Brown">
-	    <organization>Certicom</organization>
-	  </author>
-	  <date year="2009"/>
-	</front>
-	<seriesInfo name="Version" value="2.0"/>
+        <front>
+          <title>Elliptic Curve Cryptography</title>
+
+          <author initials="D" surname="Brown">
+            <organization>Certicom</organization>
+          </author>
+
+          <date year="2009"/>
+        </front>
+
+        <seriesInfo name="Version" value="2.0"/>
       </reference>
 
       <reference anchor="IEEE802.11">
@@ -548,5 +541,19 @@
                     value="Diffie-Hellman Group Transform IDs"/>
       </reference>
     </references>
+
+    <section title="Changes / Author Notes.">
+      <t>[ RFC Editor: Please remove this section befor publication ]</t>
+
+      <t>-00:<list style="symbols">
+          <t>Initial version.</t>
+
+          <t/>
+        </list>-00 to -01:<list>
+          <t>Editorial, title change.</t>
+
+          <t/>
+        </list></t>
+    </section>
   </back>
 </rfc>

@@ -4,15 +4,15 @@
 
 
 
-capport                                                  D. Harkins, Ed.
+Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: January 26, 2017                                         Google
-                                                           July 25, 2016
+Expires: January 28, 2017                                         Google
+                                                           July 27, 2016
 
 
                    Opportunistic Wireless Encryption
-                          draft-harkins-owe-00
+                          draft-harkins-owe-01
 
 Abstract
 
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 26, 2017.
+   This Internet-Draft will expire on January 28, 2017.
 
 Copyright Notice
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 1]
+Harkins & Kumari        Expires January 28, 2017                [Page 1]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -77,7 +77,8 @@ Table of Contents
    6.  Implementation Considerations . . . . . . . . . . . . . . . .   8
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
    8.  Normative References  . . . . . . . . . . . . . . . . . . . .   9
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
+   Appendix A.  Changes / Author Notes.  . . . . . . . . . . . . . .   9
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
 
@@ -110,8 +111,7 @@ Table of Contents
 
 
 
-
-Harkins & Kumari        Expires January 26, 2017                [Page 2]
+Harkins & Kumari        Expires January 28, 2017                [Page 2]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -121,15 +121,15 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 2.  Background
 
-   Many businesses-- bars, coffee shops, etc.-- offer free Wi-Fi as an
-   inducement to customers to enter and remain in the premises.  Many
-   customers will use the availability of free Wi-Fi as a deciding
+   Many businesses (for exmaple, coffee shops and bars) offer free Wi-Fi
+   as an inducement to customers to enter and remain in the premises.
+   Many customers will use the availability of free Wi-Fi as a deciding
    factor in which business to patronize.  Since these businesses are
-   not Internet service providers, they are not willing and/or not
-   qualified to perform complex configuration on their network.  In
+   not Internet service providers, they are often unwilling and/or
+   unqualified to perform complex configuration on their network.  In
    addition, customers are generally unwilling to do complicated
    provisioning on their devices just to obtain free Wi-Fi.  This leads
-   to a popular deployment technique-- a network protected using a
+   to a popular deployment technique -- a network protected using a
    shared, and public PSK that is printed on a sandwich board at the
    entrance, on a chalkboard on the wall, or on a menu.  The PSK is used
    in a cryptographic handshake defined in [IEEE802.11] called the
@@ -167,7 +167,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 3]
+Harkins & Kumari        Expires January 28, 2017                [Page 3]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -223,7 +223,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 4]
+Harkins & Kumari        Expires January 28, 2017                [Page 4]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -279,7 +279,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 5]
+Harkins & Kumari        Expires January 28, 2017                [Page 5]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -335,7 +335,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 6]
+Harkins & Kumari        Expires January 28, 2017                [Page 6]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -363,7 +363,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    Where HKDF-expand() and HKDF-extract() are defined in [RFC5869], NULL
    indicates the "salt-less" invocation of HKDF using the hash algorithm
    defined in section Section 4.1, and n is the bitlength of the digest
-   produced by that hash algorithm. z and prk are irretrievably deleted
+   produced by that hash algorithm.  z and prk are irretrievably deleted
    once the PMK has been generated.
 
    The PMKID is generated by hashing the two Diffie-Hellman public keys
@@ -391,7 +391,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 7]
+Harkins & Kumari        Expires January 28, 2017                [Page 7]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -447,7 +447,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-Harkins & Kumari        Expires January 26, 2017                [Page 8]
+Harkins & Kumari        Expires January 28, 2017                [Page 8]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
@@ -478,7 +478,9 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
               ikev2-parameters.xhtml#ikev2-parameters-8>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
+              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
+              RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
@@ -492,21 +494,31 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
               2009.
 
-Authors' Addresses
+Appendix A.  Changes / Author Notes.
+
+   [ RFC Editor: Please remove this section befor publication ]
+
+   -00:
 
 
 
 
-
-
-
-
-
-
-Harkins & Kumari        Expires January 26, 2017                [Page 9]
+Harkins & Kumari        Expires January 28, 2017                [Page 9]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
+
+   o  Initial version.
+
+   o
+
+   -00 to -01:
+
+      Editorial, title change.
+
+
+
+Authors' Addresses
 
    Dan Harkins (editor)
    HP Enterprise
@@ -547,17 +559,5 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari        Expires January 26, 2017               [Page 10]
+Harkins & Kumari        Expires January 28, 2017               [Page 10]
 ```
