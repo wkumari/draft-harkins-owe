@@ -66,18 +66,18 @@ Table of Contents
      1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   2
      1.2.  Notation  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Background  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  802.11 Network Access . . . . . . . . . . . . . . . . . . . .   3
+   3.  802.11 Network Access . . . . . . . . . . . . . . . . . . . .   4
    4.  Opportunistic Wireless Encryption . . . . . . . . . . . . . .   4
      4.1.  Cryptography  . . . . . . . . . . . . . . . . . . . . . .   4
      4.2.  OWE Discovery . . . . . . . . . . . . . . . . . . . . . .   5
-     4.3.  OWE Association . . . . . . . . . . . . . . . . . . . . .   5
+     4.3.  OWE Association . . . . . . . . . . . . . . . . . . . . .   6
      4.4.  OWE Post-Association  . . . . . . . . . . . . . . . . . .   7
-     4.5.  OWE PMK Caching . . . . . . . . . . . . . . . . . . . . .   7
+     4.5.  OWE PMK Caching . . . . . . . . . . . . . . . . . . . . .   8
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    6.  Implementation Considerations . . . . . . . . . . . . . . . .   8
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    8.  Normative References  . . . . . . . . . . . . . . . . . . . .   9
-   Appendix A.  Changes / Author Notes.  . . . . . . . . . . . . . .   9
+   Appendix A.  Changes / Author Notes.  . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
@@ -121,7 +121,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 2.  Background
 
-   Many businesses (for exmaple, coffee shops and bars) offer free Wi-Fi
+   Many businesses (for example, coffee shops and bars) offer free Wi-Fi
    as an inducement to customers to enter and remain in the premises.
    Many customers will use the availability of free Wi-Fi as a deciding
    factor in which business to patronize.  Since these businesses are
@@ -130,7 +130,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    addition, customers are generally unwilling to do complicated
    provisioning on their devices just to obtain free Wi-Fi.  This leads
    to a popular deployment technique -- a network protected using a
-   shared, and public PSK that is printed on a sandwich board at the
+   shared and public PSK that is printed on a sandwich board at the
    entrance, on a chalkboard on the wall, or on a menu.  The PSK is used
    in a cryptographic handshake defined in [IEEE802.11] called the
    "4-way handshake" to prove knowledge of the PSK and derive traffic
@@ -156,14 +156,14 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    OWE requires no special configuration or user interaction but
    provides a higher level of security than a common, shared, and public
-   PSK.  OWE provides more security to the end user, while also being
-   easier to use (no public keys to maintain, share, etc.).
+   PSK.  OWE not only provides more security to the end user, it is also
+   easier to use both for the provider and the end user -- there are no
+   public keys to maintain, share, or manage.
 
-3.  802.11 Network Access
 
-   Wi-Fi Access Points advertise their presence through frames called
-   "beacons".  These frames inform clients within earshot of the SSID
-   the AP is advertising, the AP's MAC address (known as its "BSSID"),
+
+
+
 
 
 
@@ -172,6 +172,11 @@ Harkins & Kumari        Expires January 28, 2017                [Page 3]
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
+3.  802.11 Network Access
+
+   Wi-Fi Access Points advertise their presence through frames called
+   "beacons".  These frames inform clients within earshot of the SSID
+   the AP is advertising, the AP's MAC address (known as its "BSSID"),
    security policy governing access, which symmetric ciphers it uses for
    unicast and broadcast frames, QoS information, as well as support for
    other optional features of [IEEE802.11].  Wi-Fi clients can actively
@@ -184,11 +189,11 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    gain network access.  The first step is "802.11 authentication".  For
    most methods of access (SAE being the exception), this is an empty
    exchange known as "Open Authentication-- basically the client says,
-   "authenticate me", and the AP resonds "ok, you're authenticated".
-   After 802.11 authentication is 802.11 association in which the client
-   requests network access from an AP-- the SSID, a selection of the
-   type of subsequent authentication to be made, any pairwise and group
-   ciphers, etc-- using an 802.11 association request.  The AP
+   "authenticate me", and the AP responds "ok, you're authenticated".
+   After 802.11 authentication is 802.11 association, in which the
+   client requests network access from an AP-- the SSID, a selection of
+   the type of subsequent authentication to be made, any pairwise and
+   group ciphers, etc-- using an 802.11 association request.  The AP
    acknowledges the request with an 802.11 association response.
 
    If the network is Open-- no authentication, no encryption-- the
@@ -197,7 +202,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    Handshake is initiated by the AP using the PSK to authenticate the
    client and derive traffic encryption keys.
 
-   To add an opportunistic encryption mode of access to [IEEE802.11] it
+   To add an opportunistic encryption mode of access to [IEEE802.11], it
    is necessary to perform a Diffie-Hellman key exchange during 802.11
    authentication and use the resulting pairwise secret with the 4-way
    Handshake.
@@ -214,12 +219,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    OWE uses a hash algorithm for generation of a secret and a secret
    identifier.  The particular hash algorithm depends on the group
-   chosen for the Diffie-Hellman.  For ECC, the hash algorithm depends
-   on the size of the prime defining the curve, p:
 
-   o  SHA-256: when len(p) <= 256
-
-   o  SHA-384: when 256 < len(p) <= 384
 
 
 
@@ -227,6 +227,13 @@ Harkins & Kumari        Expires January 28, 2017                [Page 4]
 
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
+
+   chosen for the Diffie-Hellman.  For ECC, the hash algorithm depends
+   on the size of the prime defining the curve, p:
+
+   o  SHA-256: when len(p) <= 256
+
+   o  SHA-384: when 256 < len(p) <= 384
 
    o  SHA-512: when 384 < len(p)
 
@@ -242,7 +249,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 4.2.  OWE Discovery
 
    An access point advertises support for OWE using an Authentication
-   and Key Management (AKM) suite identifer for OWE.  This AKM is
+   and Key Management (AKM) suite identifier for OWE.  This AKM is
    illustrated in Table 1 and is added to the RSN Element in all beacons
    and probe responses that the AP issues.
 
@@ -250,7 +257,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    +----------+--------+-------------------+-------------+-------------+
    |   OUI    | Suite  |   Authentication  |     Key     |     Key     |
-   |          |  Type  |        Type       | Manamgement |  derivation |
+   |          |  Type  |        Type       |  Management |  derivation |
    |          |        |                   |     Type    |     type    |
    +----------+--------+-------------------+-------------+-------------+
    | 00-0F-AC | ANA-1  |   Opportunistic   |     This    |  [RFC5869]  |
@@ -266,6 +273,17 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    System" 802.11 authentication as defined in [IEEE802.11], it then
    proceeds to 802.11 association.
 
+
+
+
+
+
+
+Harkins & Kumari        Expires January 28, 2017                [Page 5]
+
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
+
+
 4.3.  OWE Association
 
    Information is added to 802.11 association requests and responses by
@@ -276,14 +294,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    OWE adds the Diffie-Hellman Parameter element (see Figure 1) to
    802.11 association requests and responses.  The client adds her
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 5]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
-
    public key in the 802.11 associate request and the AP adds his public
    key in the 802.11 associate response.
 
@@ -322,16 +332,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    Section 4.5) is not performed, it MUST also include a Diffie-Hellman
    Parameter element.  If "PMK caching" is not being performed, a client
    MUST discard any 802.11 association response that indicates the OWE
-   AKM in the RSN element but does not have not a Diffie-Hellman
-   Parameter element.
-
-   For interoperability purposes, a compliant implementation MUST
-   support group nineteen (19), a 256-bit elliptic curve group.  TODO:
-   what to do if the AP doesn't like the client's chosen group?
-
-   Received Diffie-Hellman Parameter Elements are checked for validity
-   upon receipt.  For ECC, elements are checked by verifying that
-   equation for the curve is correct for the given x- and y-
 
 
 
@@ -340,19 +340,29 @@ Harkins & Kumari        Expires January 28, 2017                [Page 6]
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
+   AKM in the RSN element but does not have not a Diffie-Hellman
+   Parameter element.
+
+   For interoperability purposes, a compliant implementation MUST
+   support group nineteen (19), a 256-bit elliptic curve group. [ TODO:
+   what to do if the AP doesn't like the client's chosen group? ]
+
+   Received Diffie-Hellman Parameter Elements are checked for validity
+   upon receipt.  For ECC, elements are checked by verifying that
+   equation for the curve is correct for the given x- and y-
    coordinates, excluding the point at infinity.  For FFC, elements are
    checked that they are between one (1) and one (1) less than the
    prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
    Diffie-Hellman keys MUST result in unsuccessful association and a
-   failure of OWE.
+   failure of OWE. [ TODO: Add text on what to do next. ]
 
 4.4.  OWE Post-Association
 
-   Once the client and AP have finished 802.11 association they finish
-   the Diffie-Hellman key exchange and create a "pairwise master key"
-   (PMK), and its associated identifier, PMKID.  Given a private key x,
-   and the peer's (AP's if client, client's if AP) public key Y the
-   following are generated:
+   Once the client and AP have finished 802.11 association, they then
+   complete the Diffie-Hellman key exchange and create a "pairwise
+   master key" (PMK), and its associated identifier, PMKID.  Given a
+   private key x, and the peer's (AP's if client, client's if AP) public
+   key Y the following are generated:
 
       z = F(DH(x, Y))
 
@@ -362,7 +372,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    Where HKDF-expand() and HKDF-extract() are defined in [RFC5869], NULL
    indicates the "salt-less" invocation of HKDF using the hash algorithm
-   defined in section Section 4.1, and n is the bitlength of the digest
+   defined in section Section 4.1, and n is the bit-length of the digest
    produced by that hash algorithm.  z and prk are irretrievably deleted
    once the PMK has been generated.
 
@@ -378,16 +388,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    the 802.11 Association response, and Hash is the hash algorithm
    defined in section Section 4.1.
 
-   Upon completion of 802.11 association, the AP initiates the 4-way
-   Handshake to the client using the PMK generated above.  The result of
-   the 4-way Handshake are encryption keys to protect bulk unicast data
-   and broadcast data.
-
-4.5.  OWE PMK Caching
-
-   [IEEE802.11] defines "PMK caching" where a client and access point
-   can cache a PMK for a certain period of time and reuse it with the
-   4-way Handshake after subsequent associations to bypass potentially
 
 
 
@@ -396,6 +396,16 @@ Harkins & Kumari        Expires January 28, 2017                [Page 7]
 Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
 
+   Upon completion of 802.11 association, the AP initiates the 4-way
+   Handshake to the client using the PMK generated above.  The result of
+   the 4-way Handshake is encryption keys to protect bulk unicast data
+   and broadcast data.
+
+4.5.  OWE PMK Caching
+
+   [IEEE802.11] defines "PMK caching" where a client and access point
+   can cache a PMK for a certain period of time and reuse it with the
+   4-way Handshake after subsequent associations to bypass potentially
    expensive authentication.  A client indicates its desire to do "PMK
    caching" by including the identifying PMKID in its 802.11 association
    request.  If an AP has cached the PMK identified by that PMKID, it
@@ -411,7 +421,7 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    response but does not include a Diffie-Hellman parameter element.  If
    the AP does not have the PMK identified by the PMKID, it ignores the
    PMKID and proceeds with normal OWE 802.11 association by including a
-   Diffie-Hellman Parameeter element.
+   Diffie-Hellman Parameter element.
 
    When attempting "PMK caching" a client SHALL ignore any Diffie-
    Hellman Parameter element in an 802.11 association response that
@@ -433,9 +443,17 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    OWE is a replacement for 802.11 "Open" authentication.  Therefore,
    when OWE-compliant access points are discovered, the presentation of
-   the available SSID to users does not include special security symbols
-   such as a graphic lock.  To a user, an OWE SSID is the same as
-   "Open", it just provides more security behind the scenes.
+   the available SSID to users should not include special security
+
+
+
+Harkins & Kumari        Expires January 28, 2017                [Page 8]
+
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
+
+
+   symbols such as a "lock icon".  To a user, an OWE SSID is the same as
+   "Open", it simply provides more security behind the scenes.
 
 7.  Security Considerations
 
@@ -444,13 +462,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    versa.  They will share pairwise traffic encryption keys and have a
    cryptographic assurance that a frame claimed to be from the peer is
    actually from the peer and was not modified in flight.
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 8]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
    OWE is susceptible to an active attack in which an adversary
    impersonates an Access Point, induces a client to connect to it via
@@ -487,6 +498,16 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
               RFC5869, May 2010,
               <http://www.rfc-editor.org/info/rfc5869>.
 
+
+
+
+
+
+Harkins & Kumari        Expires January 28, 2017                [Page 9]
+
+Internet-Draft      Opportunistic Wireless Encryption          July 2016
+
+
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
@@ -499,14 +520,6 @@ Appendix A.  Changes / Author Notes.
    [ RFC Editor: Please remove this section befor publication ]
 
    -00:
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 9]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
    o  Initial version.
 
@@ -538,19 +551,6 @@ Authors' Addresses
 
    Phone: +1 408 555 1212
    Email: warren@kumari.net
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
