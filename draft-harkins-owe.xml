@@ -7,6 +7,7 @@
      An alternate method (rfc include) is described in the references. -->
 <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
+<!ENTITY RFC5386 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5386.xml">
 <!ENTITY RFC5869 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5869.xml">
 <!ENTITY RFC7435 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7435.xml">
 ]>
@@ -35,7 +36,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-02" ipr="trust200902">
+<rfc category="info" docName="draft-harkins-owe-03" ipr="trust200902">
   <front>
     <title>Opportunistic Wireless Encryption</title>
 
@@ -135,6 +136,28 @@
             <t hangText="a = len(b)"><vspace blankLines="0"/> indicates the
             length in bits of the string b.</t>
           </list></t>
+      </section>
+      <section title="Why IETF?">
+	<t>
+	  The protocol described here is an extension to the IEEE 802.11
+	  standard and the question, naturally, arises: why do this in the
+	  IETF?
+	</t>
+	<t>
+	  As the name implies, OWE provides opportunistic encryption, or
+	  encryption of traffic without authentication of endpoints.
+	  OWE was presented to the IEEE 802.11 Working Group for consideration
+	  but an "all or nothing" approach to cryptographic protection has
+	  been adopted by that body, and OWE is a stop in between "all"
+	  and "nothing". 
+	</t>
+	<t>
+	  Through documents such as <xref target="RFC7435"/> and
+	  <xref target="RFC5386"/> the IETF has been at the forefront of
+	  expanding the use of encryption in the Internet, even when
+	  authentication is not possible or practical. The IETF is a
+	  natural home for OWE.
+	</t>
       </section>
     </section>
 
@@ -470,8 +493,6 @@
 
       &RFC5869;
 
-      &RFC7435;
-
       <reference anchor="SEC1">
         <front>
           <title>Elliptic Curve Cryptography</title>
@@ -518,21 +539,36 @@
                     value="Diffie-Hellman Group Transform IDs"/>
       </reference>
     </references>
+    <references title="Informative References">
+
+      &RFC5386;
+
+      &RFC7435;
+
+    </references>
 
     <section title="Changes / Author Notes.">
       <t>[ RFC Editor: Please remove this section befor publication ]</t>
 
-      <t>-00:<list style="symbols">
+      <t>-00:
+        <list>
           <t>Initial version.</t>
-
-          <t/>
-        </list>-00 to -01:<list>
+        </list>
+        -00 to -01:
+	<list>
           <t>Editorial, title change.</t>
-        </list>-01 to -02:<list>
+        </list>
+	-01 to -02:
+	<list>
           <t>Stressed the use of this as an alternative to "Open", not PSK.
           The PSK case is more interesting to discuss, but Open is more widely
           applicable. </t>
-        </list></t>
+        </list>
+	-02 to -03:
+	<list>
+	  <t>Added "Why IETF?"</t>
+	</list>
+      </t>
     </section>
   </back>
 </rfc>

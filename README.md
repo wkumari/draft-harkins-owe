@@ -7,12 +7,12 @@
 Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: January 28, 2017                                         Google
-                                                           July 27, 2016
+Expires: February 18, 2017                                        Google
+                                                         August 17, 2016
 
 
                    Opportunistic Wireless Encryption
-                          draft-harkins-owe-02
+                          draft-harkins-owe-03
 
 Abstract
 
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 28, 2017.
+   This Internet-Draft will expire on February 18, 2017.
 
 Copyright Notice
 
@@ -55,9 +55,9 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires January 28, 2017                [Page 1]
+Harkins & Kumari        Expires February 18, 2017               [Page 1]
 
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
    to this document.  Code Components extracted from this document must
@@ -70,19 +70,22 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   2
      1.2.  Notation  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.3.  Why IETF? . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Background  . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  802.11 Network Access . . . . . . . . . . . . . . . . . . . .   4
    4.  Opportunistic Wireless Encryption . . . . . . . . . . . . . .   5
      4.1.  Cryptography  . . . . . . . . . . . . . . . . . . . . . .   5
-     4.2.  OWE Discovery . . . . . . . . . . . . . . . . . . . . . .   5
+     4.2.  OWE Discovery . . . . . . . . . . . . . . . . . . . . . .   6
      4.3.  OWE Association . . . . . . . . . . . . . . . . . . . . .   6
-     4.4.  OWE Post-Association  . . . . . . . . . . . . . . . . . .   7
+     4.4.  OWE Post-Association  . . . . . . . . . . . . . . . . . .   8
      4.5.  OWE PMK Caching . . . . . . . . . . . . . . . . . . . . .   8
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
    6.  Implementation Considerations . . . . . . . . . . . . . . . .   9
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   9
-   Appendix A.  Changes / Author Notes.  . . . . . . . . . . . . . .  10
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+   Appendix A.  Changes / Author Notes.  . . . . . . . . . . . . . .  11
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
@@ -104,18 +107,19 @@ Table of Contents
    y = F(X)
        an element-to-scalar mapping function.  For an elliptic curve
        group, it takes a point on the curve and returns the
+
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 2]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
        x-coordinate; for a finite field element it is the identity
        function, just returning the element itself.
 
    Z = DH(x,Y)
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 2]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
-
        for an elliptic curve DH(x,Y) is the multiplication of point Y by
        the scalar value x creating a point on the curve Z; for finite
        field cryptography DH(x,Y) is expontiation of element Y to the
@@ -124,6 +128,24 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    a = len(b)
        indicates the length in bits of the string b.
+
+1.3.  Why IETF?
+
+   The protocol described here is an extension to the IEEE 802.11
+   standard and the question, naturally, arises: why do this in the
+   IETF?
+
+   As the name implies, OWE provides opportunistic encryption, or
+   encryption of traffic without authentication of endpoints.  OWE was
+   presented to the IEEE 802.11 Working Group for consideration but an
+   "all or nothing" approach to cryptographic protection has been
+   adopted by that body, and OWE is a stop in between "all" and
+   "nothing".
+
+   Through documents such as [RFC7435] and [RFC5386] the IETF has been
+   at the forefront of expanding the use of encryption in the Internet,
+   even when authentication is not possible or practical.  The IETF is a
+   natural home for OWE.
 
 2.  Background
 
@@ -142,6 +164,14 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    offer free Wi-Fi as an inducement to customers to enter and remain in
    the premises.  Many customers will use the availability of free Wi-Fi
    as a deciding factor in which business to patronize.  Since these
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 3]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    businesses are not Internet service providers, they are often
    unwilling and/or unqualified to perform complex configuration on
    their network.  In addition, customers are generally unwilling to do
@@ -162,15 +192,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    that will cause the client and/or AP to reset the 802.11 state
    machine and cause them to go through the 4-way Handshake again
    thereby allowing the passive attacker to determine the traffic keys.
-
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 3]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
    Basically, this shared and public PSK mode of access is as bad as an
    open and unencrypted network.  [TODO: Explain trade offs; shared PSK
@@ -198,6 +219,15 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    that respond with "probe responses".  A probe response carries
    essentially the same information as a beacon.
 
+
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 4]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    After an AP is discovered by a client, actively through probing or
    passively through beacons, the client initiates a two-step method to
    gain network access.  The first step is "802.11 authentication".  For
@@ -220,13 +250,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    is necessary to perform a Diffie-Hellman key exchange during 802.11
    authentication and use the resulting pairwise secret with the 4-way
    Handshake.
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 4]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
 4.  Opportunistic Wireless Encryption
 
@@ -254,6 +277,13 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    o  SHA-256: when len(p) <= 2048
 
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 5]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    o  SHA-384: when 2048 < len(p) <= 3072
 
    o  SHA-512: when 3072 < len(p)
@@ -264,25 +294,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    and Key Management (AKM) suite identifier for OWE.  This AKM is
    illustrated in Table 1 and is added to the RSN Element in all beacons
    and probe responses that the AP issues.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 5]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
                                   OWE AKM
 
@@ -317,6 +328,18 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    public key in the 802.11 associate request and the AP adds his public
    key in the 802.11 associate response.
 
+
+
+
+
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 6]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
                    The Diffie-Hellman Parameter Element
 
       +------------+----------+------------+------------------------+
@@ -331,14 +354,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    where
 
    o  ANA-2 is assigned by IEEE 802.11 ANA;
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 6]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
    o  group is an unsigned two-octet integer defined in [IKE-IANA], in
       little-endian format, that identifies a domain parameter set;
@@ -373,6 +388,14 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    coordinates, excluding the point at infinity.  For FFC, elements are
    checked that they are between one (1) and one (1) less than the
    prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 7]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    Diffie-Hellman keys MUST result in unsuccessful association and a
    failure of OWE. [ TODO: Add text on what to do next. ]
 
@@ -387,14 +410,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
       z = F(DH(x, Y))
 
       prk = HKDF-extract(NULL, z)
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 7]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
       PMK = HKDF-expand(prk, "OWE Key Generation", n)
 
@@ -429,6 +444,14 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    expensive authentication.  A client indicates its desire to do "PMK
    caching" by including the identifying PMKID in its 802.11 association
    request.  If an AP has cached the PMK identified by that PMKID, it
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 8]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    includes the PMKID in its 802.11 association response, otherwise it
    ignores the PMKID and proceeds with normal 802.11 association.  OWE
    supports the notion of "PMK caching".
@@ -442,15 +465,6 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    the AP does not have the PMK identified by the PMKID, it ignores the
    PMKID and proceeds with normal OWE 802.11 association by including a
    Diffie-Hellman Parameter element.
-
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 8]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
 
    When attempting "PMK caching" a client SHALL ignore any Diffie-
    Hellman Parameter element in an 802.11 association response that
@@ -486,6 +500,14 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
 
    OWE is susceptible to an active attack in which an adversary
    impersonates an Access Point, induces a client to connect to it via
+
+
+
+Harkins & Kumari        Expires February 18, 2017               [Page 9]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    OWE while it makes a connection to the legitimate Access Point.  In
    this particular attack, the adversary is able to inspect, modify, and
    forge any data between the client and legitimate Access Point.
@@ -494,19 +516,9 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
    [IEEE802.11] and is not intended to be used when an alternative that
    provides real authentication is available.
 
-8.  Normative References
+8.  References
 
-
-
-
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017                [Page 9]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
+8.1.  Normative References
 
    [IEEE802.11]
               IEEE Computer Society, "Telecommunications and information
@@ -522,21 +534,35 @@ Internet-Draft      Opportunistic Wireless Encryption          July 2016
               ikev2-parameters.xhtml#ikev2-parameters-8>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
-              RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
               RFC5869, May 2010,
               <http://www.rfc-editor.org/info/rfc5869>.
 
+   [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
+              2009.
+
+8.2.  Informative References
+
+   [RFC5386]  Williams, N. and M. Richardson, "Better-Than-Nothing
+              Security: An Unauthenticated Mode of IPsec", RFC 5386, DOI
+              10.17487/RFC5386, November 2008,
+              <http://www.rfc-editor.org/info/rfc5386>.
+
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
 
-   [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
-              2009.
+
+
+
+
+Harkins & Kumari        Expires February 18, 2017              [Page 10]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
 
 Appendix A.  Changes / Author Notes.
 
@@ -544,9 +570,7 @@ Appendix A.  Changes / Author Notes.
 
    -00:
 
-   o  Initial version.
-
-   o
+      Initial version.
 
    -00 to -01:
 
@@ -554,19 +578,13 @@ Appendix A.  Changes / Author Notes.
 
    -01 to -02:
 
-
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017               [Page 10]
-
-Internet-Draft      Opportunistic Wireless Encryption          July 2016
-
-
       Stressed the use of this as an alternative to "Open", not PSK.
       The PSK case is more interesting to discuss, but Open is more
       widely applicable.
+
+   -02 to -03:
+
+      Added "Why IETF?"
 
 Authors' Addresses
 
@@ -597,23 +615,5 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari        Expires January 28, 2017               [Page 11]
+Harkins & Kumari        Expires February 18, 2017              [Page 11]
 ```
