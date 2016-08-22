@@ -121,11 +121,10 @@
       <section title="Notation">
         <t>This memo uses the following notation: <list hangIndent="4"
             style="hanging">
-            <t hangText="y = F(X)"><vspace blankLines="0"/> an
-            element-to-scalar mapping function. For an elliptic curve group,
-            it takes a point on the curve and returns the x-coordinate; for a
-            finite field element it is the identity function, just returning
-            the element itself.</t>
+            <t hangText="y = F(X)"> an element-to-scalar mapping function. For
+            an elliptic curve group, it takes a point on the curve and returns
+            the x-coordinate; for a finite field element it is the identity
+            function, just returning the element itself.</t>
 
             <t hangText="Z = DH(x,Y)"><vspace blankLines="0"/> for an elliptic
             curve DH(x,Y) is the multiplication of point Y by the scalar value
@@ -137,27 +136,30 @@
             length in bits of the string b.</t>
           </list></t>
       </section>
+
       <section title="Why IETF?">
-	<t>
-	  The protocol described here is an extension to the IEEE 802.11
-	  standard and the question, naturally, arises: why do this in the
-	  IETF?
-	</t>
-	<t>
-	  As the name implies, OWE provides opportunistic encryption, or
-	  encryption of traffic without authentication of endpoints.
-	  OWE was presented to the IEEE 802.11 Working Group for consideration
-	  but an "all or nothing" approach to cryptographic protection has
-	  been adopted by that body, and OWE is a stop in between "all"
-	  and "nothing". 
-	</t>
-	<t>
-	  Through documents such as <xref target="RFC7435"/> and
-	  <xref target="RFC5386"/> the IETF has been at the forefront of
-	  expanding the use of encryption in the Internet, even when
-	  authentication is not possible or practical. The IETF is a
-	  natural home for OWE.
-	</t>
+        <t>The protocol described here is an extension to the IEEE 802.11
+        standard and the question, naturally, arises: why do this in the
+        IETF?</t>
+
+        <t>As the name implies, OWE provides opportunistic encryption, or
+        encryption of traffic without authentication of endpoints. OWE was
+        presented to the IEEE 802.11 Working Group for consideration but an
+        "all or nothing" approach to cryptographic protection has been adopted
+        by that body, and OWE is a stop in between "all" and "nothing".</t>
+
+        <t>Through documents such as <xref target="RFC7435"/> and <xref
+        target="RFC5386"/> the IETF has been at the forefront of expanding the
+        use of encryption in the Internet, even when authentication is not
+        possible or practical. The IETF is a natural home for OWE.</t>
+
+        <t>[ RFC Editor, please remove: This topic has been discussed within
+        the IEEE IETF Coordination group (notes from meeting:
+        https://www.ietf.org/mail-archive/web/ieee-ietf-coord/current/msg00828.html),
+        and within the IEEE. The IEEE has allocated codepoints for this
+        technique, see:
+        http://www.ieee802.org/11/email/stds-802-11-editors/msg00209.html
+        ]</t>
       </section>
     </section>
 
@@ -171,7 +173,7 @@
       traffic vulnerable to sniffing attacks, for example from someone in the
       adjacent hotel room running Wireshark, pervasive monitors, etc. [Ed
       note: The ietf-hotel SSID is an example of an open wifi network likely
-      familiar to most readers. ] </t>
+      familiar to most readers. ]</t>
 
       <t>In addition, many businesses (for example, coffee shops and bars)
       offer free Wi-Fi as an inducement to customers to enter and remain in
@@ -539,36 +541,27 @@
                     value="Diffie-Hellman Group Transform IDs"/>
       </reference>
     </references>
-    <references title="Informative References">
 
+    <references title="Informative References">
       &RFC5386;
 
       &RFC7435;
-
     </references>
 
     <section title="Changes / Author Notes.">
       <t>[ RFC Editor: Please remove this section befor publication ]</t>
 
-      <t>-00:
-        <list>
+      <t>-00: <list>
           <t>Initial version.</t>
-        </list>
-        -00 to -01:
-	<list>
+        </list> -00 to -01: <list>
           <t>Editorial, title change.</t>
-        </list>
-	-01 to -02:
-	<list>
+        </list> -01 to -02: <list>
           <t>Stressed the use of this as an alternative to "Open", not PSK.
           The PSK case is more interesting to discuss, but Open is more widely
-          applicable. </t>
-        </list>
-	-02 to -03:
-	<list>
-	  <t>Added "Why IETF?"</t>
-	</list>
-      </t>
+          applicable.</t>
+        </list> -02 to -03: <list>
+          <t>Added "Why IETF?"</t>
+        </list></t>
     </section>
   </back>
 </rfc>

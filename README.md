@@ -7,8 +7,8 @@
 Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: February 18, 2017                                        Google
-                                                         August 17, 2016
+Expires: February 23, 2017                                        Google
+                                                         August 22, 2016
 
 
                    Opportunistic Wireless Encryption
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 18, 2017.
+   This Internet-Draft will expire on February 23, 2017.
 
 Copyright Notice
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires February 18, 2017               [Page 1]
+Harkins & Kumari        Expires February 23, 2017               [Page 1]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
@@ -104,20 +104,17 @@ Table of Contents
 
    This memo uses the following notation:
 
-   y = F(X)
-       an element-to-scalar mapping function.  For an elliptic curve
-       group, it takes a point on the curve and returns the
+   y = F(X)  an element-to-scalar mapping function.  For an elliptic
+       curve group, it takes a point on the curve and returns the
+       x-coordinate; for a finite field element it is the identity
+       function, just returning the element itself.
 
 
 
-
-Harkins & Kumari        Expires February 18, 2017               [Page 2]
+Harkins & Kumari        Expires February 23, 2017               [Page 2]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
-
-       x-coordinate; for a finite field element it is the identity
-       function, just returning the element itself.
 
    Z = DH(x,Y)
        for an elliptic curve DH(x,Y) is the multiplication of point Y by
@@ -147,6 +144,13 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
    even when authentication is not possible or practical.  The IETF is a
    natural home for OWE.
 
+   [ RFC Editor, please remove: This topic has been discussed within the
+   IEEE IETF Coordination group (notes from meeting:
+   https://www.ietf.org/mail-archive/web/ieee-ietf-coord/current/
+   msg00828.html), and within the IEEE.  The IEEE has allocated
+   codepoints for this technique, see: http://www.ieee802.org/11/email/
+   stds-802-11-editors/msg00209.html ]
+
 2.  Background
 
    Internet access has become an expected service at many locations -
@@ -160,18 +164,18 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
    monitors, etc.  [Ed note: The ietf-hotel SSID is an example of an
    open wifi network likely familiar to most readers. ]
 
-   In addition, many businesses (for example, coffee shops and bars)
-   offer free Wi-Fi as an inducement to customers to enter and remain in
-   the premises.  Many customers will use the availability of free Wi-Fi
-   as a deciding factor in which business to patronize.  Since these
 
 
 
-Harkins & Kumari        Expires February 18, 2017               [Page 3]
+Harkins & Kumari        Expires February 23, 2017               [Page 3]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
+   In addition, many businesses (for example, coffee shops and bars)
+   offer free Wi-Fi as an inducement to customers to enter and remain in
+   the premises.  Many customers will use the availability of free Wi-Fi
+   as a deciding factor in which business to patronize.  Since these
    businesses are not Internet service providers, they are often
    unwilling and/or unqualified to perform complex configuration on
    their network.  In addition, customers are generally unwilling to do
@@ -216,17 +220,16 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
    unicast and broadcast frames, QoS information, as well as support for
    other optional features of [IEEE802.11].  Wi-Fi clients can actively
    discover APs by issuing "probe requests" which are queries for APs
-   that respond with "probe responses".  A probe response carries
-   essentially the same information as a beacon.
 
 
 
-
-
-Harkins & Kumari        Expires February 18, 2017               [Page 4]
+Harkins & Kumari        Expires February 23, 2017               [Page 4]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
+
+   that respond with "probe responses".  A probe response carries
+   essentially the same information as a beacon.
 
    After an AP is discovered by a client, actively through probing or
    passively through beacons, the client initiates a two-step method to
@@ -272,17 +275,19 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
    o  SHA-512: when 384 < len(p)
 
+
+
+
+
+Harkins & Kumari        Expires February 23, 2017               [Page 5]
+
+Internet-Draft      Opportunistic Wireless Encryption        August 2016
+
+
    For FFC, the hash algorithm depends on the prime, p, defining the
    finite field:
 
    o  SHA-256: when len(p) <= 2048
-
-
-
-Harkins & Kumari        Expires February 18, 2017               [Page 5]
-
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
-
 
    o  SHA-384: when 2048 < len(p) <= 3072
 
@@ -330,12 +335,7 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-
-
-
-
-
-Harkins & Kumari        Expires February 18, 2017               [Page 6]
+Harkins & Kumari        Expires February 23, 2017               [Page 6]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
@@ -391,7 +391,7 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 18, 2017               [Page 7]
+Harkins & Kumari        Expires February 23, 2017               [Page 7]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
@@ -447,7 +447,7 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 18, 2017               [Page 8]
+Harkins & Kumari        Expires February 23, 2017               [Page 8]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
@@ -503,7 +503,7 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 18, 2017               [Page 9]
+Harkins & Kumari        Expires February 23, 2017               [Page 9]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
@@ -534,7 +534,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
               ikev2-parameters.xhtml#ikev2-parameters-8>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
+              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
+              RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
@@ -557,9 +559,7 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-
-
-Harkins & Kumari        Expires February 18, 2017              [Page 10]
+Harkins & Kumari        Expires February 23, 2017              [Page 10]
 
 Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
@@ -615,5 +615,5 @@ Authors' Addresses
 
 
 
-Harkins & Kumari        Expires February 18, 2017              [Page 11]
+Harkins & Kumari        Expires February 23, 2017              [Page 11]
 ```
