@@ -7,8 +7,8 @@
 Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: February 23, 2017                                        Google
-                                                         August 22, 2016
+Expires: April 27, 2017                                           Google
+                                                        October 24, 2016
 
 
                    Opportunistic Wireless Encryption
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 23, 2017.
+   This Internet-Draft will expire on April 27, 2017.
 
 Copyright Notice
 
@@ -55,9 +55,9 @@ Copyright Notice
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 1]
+Harkins & Kumari         Expires April 27, 2017                 [Page 1]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    to this document.  Code Components extracted from this document must
@@ -111,9 +111,9 @@ Table of Contents
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 2]
+Harkins & Kumari         Expires April 27, 2017                 [Page 2]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    Z = DH(x,Y)
@@ -167,9 +167,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 3]
+Harkins & Kumari         Expires April 27, 2017                 [Page 3]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    In addition, many businesses (for example, coffee shops and bars)
@@ -223,9 +223,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 4]
+Harkins & Kumari         Expires April 27, 2017                 [Page 4]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    that respond with "probe responses".  A probe response carries
@@ -279,9 +279,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 5]
+Harkins & Kumari         Expires April 27, 2017                 [Page 5]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    For FFC, the hash algorithm depends on the prime, p, defining the
@@ -335,9 +335,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 6]
+Harkins & Kumari         Expires April 27, 2017                 [Page 6]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
                    The Diffie-Hellman Parameter Element
@@ -391,9 +391,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 7]
+Harkins & Kumari         Expires April 27, 2017                 [Page 7]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    Diffie-Hellman keys MUST result in unsuccessful association and a
@@ -447,9 +447,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 8]
+Harkins & Kumari         Expires April 27, 2017                 [Page 8]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    includes the PMKID in its 802.11 association response, otherwise it
@@ -503,9 +503,9 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
 
 
 
-Harkins & Kumari        Expires February 23, 2017               [Page 9]
+Harkins & Kumari         Expires April 27, 2017                 [Page 9]
 
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    OWE while it makes a connection to the legitimate Access Point.  In
@@ -538,6 +538,10 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
               RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC2629]  Rose, M., "Writing I-Ds and RFCs using XML", RFC 2629, DOI
+              10.17487/RFC2629, June 1999,
+              <http://www.rfc-editor.org/info/rfc2629>.
+
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
               RFC5869, May 2010,
@@ -553,16 +557,16 @@ Internet-Draft      Opportunistic Wireless Encryption        August 2016
               10.17487/RFC5386, November 2008,
               <http://www.rfc-editor.org/info/rfc5386>.
 
+
+
+Harkins & Kumari         Expires April 27, 2017                [Page 10]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
+
+
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
               December 2014, <http://www.rfc-editor.org/info/rfc7435>.
-
-
-
-Harkins & Kumari        Expires February 23, 2017              [Page 10]
-
-Internet-Draft      Opportunistic Wireless Encryption        August 2016
-
 
 Appendix A.  Changes / Author Notes.
 
@@ -611,9 +615,5 @@ Authors' Addresses
 
 
 
-
-
-
-
-Harkins & Kumari        Expires February 23, 2017              [Page 11]
+Harkins & Kumari         Expires April 27, 2017                [Page 11]
 ```
