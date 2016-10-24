@@ -27,7 +27,7 @@ which is available here: http://xml.resource.org. -->
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-03" ipr="trust200902">
+<rfc category="info" docName="draft-harkins-owe-04" ipr="trust200902">
   <front>
     <title>Opportunistic Wireless Encryption</title>
 
@@ -112,7 +112,7 @@ which is available here: http://xml.resource.org. -->
       <section title="Notation">
         <t>This memo uses the following notation: <list hangIndent="4"
             style="hanging">
-            <t hangText="y = F(X)"> an element-to-scalar mapping function. For
+            <t hangText="y = F(X)">an element-to-scalar mapping function. For
             an elliptic curve group, it takes a point on the curve and returns
             the x-coordinate; for a finite field element it is the identity
             function, just returning the element itself.</t>
@@ -189,13 +189,12 @@ which is available here: http://xml.resource.org. -->
       he can issue a forged "de-authenticate" frame that will cause the client
       and/or AP to reset the 802.11 state machine and cause them to go through
       the 4-way Handshake again thereby allowing the passive attacker to
-      determine the traffic keys.</t>
+      determine the traffic keys. Basically, this shared and public PSK mode
+      of access is as bad as an open and unencrypted network; some would say
+      worse, as it provides users with a false sense of security.</t>
 
-      <t>Basically, this shared and public PSK mode of access is as bad as an
-      open and unencrypted network. [TODO: Explain trade offs; shared PSK
-      means the attacker has to be active and could provide a false sense of
-      security.] With OWE, the client and AP, would perform a Diffie-Hellman
-      key exchange during the access procedure and use the resulting pairwise
+      <t> With OWE, the client and AP, would perform a Diffie-Hellman key
+      exchange during the access procedure and use the resulting pairwise
       secret with the 4-way Handshake, instead of using a shared and public
       PSK in the 4-way Handshake.</t>
 
@@ -483,8 +482,11 @@ which is available here: http://xml.resource.org. -->
       <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
 
       <?rfc include='reference.RFC.2119'?>
+
       <?rfc include='reference.RFC.2629'?>
+
       <?rfc include='reference.RFC.5869'?>
+
       <reference anchor="SEC1">
         <front>
           <title>Elliptic Curve Cryptography</title>
@@ -534,6 +536,7 @@ which is available here: http://xml.resource.org. -->
 
     <references title="Informative References">
       <?rfc include='reference.RFC.5386'?>
+
       <?rfc include='reference.RFC.7435'?>
     </references>
 
@@ -550,6 +553,9 @@ which is available here: http://xml.resource.org. -->
           applicable.</t>
         </list> -02 to -03: <list>
           <t>Added "Why IETF?"</t>
+        </list>-03 to -04:<list>
+          <t>Closed the "False sense of security" TODO - it was already done
+          (above).</t>
         </list></t>
     </section>
   </back>

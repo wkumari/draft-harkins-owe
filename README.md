@@ -12,7 +12,7 @@ Expires: April 27, 2017                                           Google
 
 
                    Opportunistic Wireless Encryption
-                          draft-harkins-owe-03
+                          draft-harkins-owe-04
 
 Abstract
 
@@ -196,14 +196,14 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    that will cause the client and/or AP to reset the 802.11 state
    machine and cause them to go through the 4-way Handshake again
    thereby allowing the passive attacker to determine the traffic keys.
-
    Basically, this shared and public PSK mode of access is as bad as an
-   open and unencrypted network.  [TODO: Explain trade offs; shared PSK
-   means the attacker has to be active and could provide a false sense
-   of security.]  With OWE, the client and AP, would perform a Diffie-
-   Hellman key exchange during the access procedure and use the
-   resulting pairwise secret with the 4-way Handshake, instead of using
-   a shared and public PSK in the 4-way Handshake.
+   open and unencrypted network; some would say worse, as it provides
+   users with a false sense of security.
+
+   With OWE, the client and AP, would perform a Diffie-Hellman key
+   exchange during the access procedure and use the resulting pairwise
+   secret with the 4-way Handshake, instead of using a shared and public
+   PSK in the 4-way Handshake.
 
    OWE requires no special configuration or user interaction but
    provides a higher level of security than a common, shared, and public
@@ -590,6 +590,11 @@ Appendix A.  Changes / Author Notes.
 
       Added "Why IETF?"
 
+   -03 to -04:
+
+      Closed the "False sense of security" TODO - it was already done
+      (above).
+
 Authors' Addresses
 
    Dan Harkins (editor)
@@ -600,6 +605,19 @@ Authors' Addresses
 
    Phone: +1 415 555 1212
    Email: dharkins@arubanetworks.com
+
+
+
+
+
+
+
+
+
+
+Harkins & Kumari         Expires April 27, 2017                [Page 11]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    Warren Kumari (editor)
@@ -615,5 +633,43 @@ Authors' Addresses
 
 
 
-Harkins & Kumari         Expires April 27, 2017                [Page 11]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Harkins & Kumari         Expires April 27, 2017                [Page 12]
 ```
