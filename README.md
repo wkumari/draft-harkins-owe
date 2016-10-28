@@ -7,8 +7,8 @@
 Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: April 27, 2017                                           Google
-                                                        October 24, 2016
+Expires: April 30, 2017                                           Google
+                                                        October 27, 2016
 
 
                    Opportunistic Wireless Encryption
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 27, 2017.
+   This Internet-Draft will expire on April 30, 2017.
 
 Copyright Notice
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 
 
-Harkins & Kumari         Expires April 27, 2017                 [Page 1]
+Harkins & Kumari         Expires April 30, 2017                 [Page 1]
 
 Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
@@ -78,15 +78,15 @@ Table of Contents
      4.2.  OWE Discovery . . . . . . . . . . . . . . . . . . . . . .   6
      4.3.  OWE Association . . . . . . . . . . . . . . . . . . . . .   6
      4.4.  OWE Post-Association  . . . . . . . . . . . . . . . . . .   8
-     4.5.  OWE PMK Caching . . . . . . . . . . . . . . . . . . . . .   8
+     4.5.  OWE PMK Caching . . . . . . . . . . . . . . . . . . . . .   9
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
    6.  Implementation Considerations . . . . . . . . . . . . . . . .   9
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Appendix A.  Changes / Author Notes.  . . . . . . . . . . . . . .  11
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
 
@@ -111,7 +111,7 @@ Table of Contents
 
 
 
-Harkins & Kumari         Expires April 27, 2017                 [Page 2]
+Harkins & Kumari         Expires April 30, 2017                 [Page 2]
 
 Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
@@ -167,7 +167,7 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
 
-Harkins & Kumari         Expires April 27, 2017                 [Page 3]
+Harkins & Kumari         Expires April 30, 2017                 [Page 3]
 
 Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
@@ -223,7 +223,7 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
 
-Harkins & Kumari         Expires April 27, 2017                 [Page 4]
+Harkins & Kumari         Expires April 30, 2017                 [Page 4]
 
 Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
@@ -279,7 +279,7 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
 
-Harkins & Kumari         Expires April 27, 2017                 [Page 5]
+Harkins & Kumari         Expires April 30, 2017                 [Page 5]
 
 Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
@@ -307,14 +307,12 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    |          |  Type  |        Type       |  Management |  derivation |
    |          |        |                   |     Type    |     type    |
    +----------+--------+-------------------+-------------+-------------+
-   | 00-0F-AC | ANA-1  |   Opportunistic   |     This    |  [RFC5869]  |
+   | 00-0F-AC |   18   |   Opportunistic   |     This    |  [RFC5869]  |
    |          |        |      Wireless     |   document  |             |
    |          |        |     Encryption    |             |             |
    +----------+--------+-------------------+-------------+-------------+
 
                              Table 1: OWE AKM
-
-   where ANA-1 is assigned by IEEE 802.11 ANA.
 
    Once a client discovers an OWE-compliant AP, it performs "Open
    System" 802.11 authentication as defined in [IEEE802.11], it then
@@ -335,7 +333,9 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
 
-Harkins & Kumari         Expires April 27, 2017                 [Page 6]
+
+
+Harkins & Kumari         Expires April 30, 2017                 [Page 6]
 
 Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
@@ -346,14 +346,12 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
       | Element ID |  Length  |     ID     |   element-specific     |
       |            |          |  Extension |         data           |
       +------------+----------+------------+---------+--------------+
-      |    255     | variable |   ANA-2    | group   |  public key  |
+      |    255     | variable |     32     | group   |  public key  |
       +------------+----------+------------+---------+--------------+
 
                                  Figure 1
 
    where
-
-   o  ANA-2 is assigned by IEEE 802.11 ANA;
 
    o  group is an unsigned two-octet integer defined in [IKE-IANA], in
       little-endian format, that identifies a domain parameter set;
@@ -379,8 +377,24 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    Parameter element.
 
    For interoperability purposes, a compliant implementation MUST
-   support group nineteen (19), a 256-bit elliptic curve group. [ TODO:
-   what to do if the AP doesn't like the client's chosen group? ]
+   support group nineteen (19), a 256-bit elliptic curve group.  If the
+   AP does not support the group indicated in the received 802.11
+   association request it MUST respond with an 802.11 association
+   response with a status code of seventy-seven (77) indicating an
+   unsupported finite cyclic group.  A client that receives an 802.11
+   association response with a status code of seventy-seven SHOULD retry
+   OWE with a different supported group and, due to the unsecured nature
+   of 802.11 association, MAY request association again using the group
+   which resulted in failure.  This failure SHOULD be logged and if the
+   client abandons association due to the failure to agree on any group,
+   notification of this fact SHOULD be provided to the user.
+
+
+
+Harkins & Kumari         Expires April 30, 2017                 [Page 7]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
+
 
    Received Diffie-Hellman Parameter Elements are checked for validity
    upon receipt.  For ECC, elements are checked by verifying that
@@ -388,16 +402,13 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    coordinates, excluding the point at infinity.  For FFC, elements are
    checked that they are between one (1) and one (1) less than the
    prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
-
-
-
-Harkins & Kumari         Expires April 27, 2017                 [Page 7]
-
-Internet-Draft      Opportunistic Wireless Encryption       October 2016
-
-
-   Diffie-Hellman keys MUST result in unsuccessful association and a
-   failure of OWE. [ TODO: Add text on what to do next. ]
+   Diffie-Hellman keys MUST result in unsuccessful association, a
+   failure of OWE, and resetting of the 802.11 state machine.  Due to
+   the unsecured nature of 802.11 association a client SHOULD retry OWE
+   a number of times (which this memo does not specify).  This failure
+   SHOULD be logged and if the client abandons association due to the
+   (repeated) receipt of invalid elements, notification of this fact
+   SHOULD be provided to the user.
 
 4.4.  OWE Post-Association
 
@@ -433,6 +444,14 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
    Upon completion of 802.11 association, the AP initiates the 4-way
    Handshake to the client using the PMK generated above.  The result of
+
+
+
+Harkins & Kumari         Expires April 30, 2017                 [Page 8]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
+
+
    the 4-way Handshake is encryption keys to protect bulk unicast data
    and broadcast data.
 
@@ -444,14 +463,6 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    expensive authentication.  A client indicates its desire to do "PMK
    caching" by including the identifying PMKID in its 802.11 association
    request.  If an AP has cached the PMK identified by that PMKID, it
-
-
-
-Harkins & Kumari         Expires April 27, 2017                 [Page 8]
-
-Internet-Draft      Opportunistic Wireless Encryption       October 2016
-
-
    includes the PMKID in its 802.11 association response, otherwise it
    ignores the PMKID and proceeds with normal 802.11 association.  OWE
    supports the notion of "PMK caching".
@@ -490,6 +501,13 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    symbols such as a "lock icon".  To a user, an OWE SSID is the same as
    "Open", it simply provides more security behind the scenes.
 
+
+
+Harkins & Kumari         Expires April 30, 2017                 [Page 9]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
+
+
 7.  Security Considerations
 
    Opportunistic encryption does not provide authentication.  The client
@@ -500,14 +518,6 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
    OWE is susceptible to an active attack in which an adversary
    impersonates an Access Point, induces a client to connect to it via
-
-
-
-Harkins & Kumari         Expires April 27, 2017                 [Page 9]
-
-Internet-Draft      Opportunistic Wireless Encryption       October 2016
-
-
    OWE while it makes a connection to the legitimate Access Point.  In
    this particular attack, the adversary is able to inspect, modify, and
    forge any data between the client and legitimate Access Point.
@@ -534,13 +544,7 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
               ikev2-parameters.xhtml#ikev2-parameters-8>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
-              RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
-
-   [RFC2629]  Rose, M., "Writing I-Ds and RFCs using XML", RFC 2629, DOI
-              10.17487/RFC2629, June 1999,
-              <http://www.rfc-editor.org/info/rfc2629>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
@@ -550,19 +554,22 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
    [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
               2009.
 
+
+
+
+
+
+Harkins & Kumari         Expires April 30, 2017                [Page 10]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
+
+
 8.2.  Informative References
 
    [RFC5386]  Williams, N. and M. Richardson, "Better-Than-Nothing
               Security: An Unauthenticated Mode of IPsec", RFC 5386, DOI
               10.17487/RFC5386, November 2008,
               <http://www.rfc-editor.org/info/rfc5386>.
-
-
-
-Harkins & Kumari         Expires April 27, 2017                [Page 10]
-
-Internet-Draft      Opportunistic Wireless Encryption       October 2016
-
 
    [RFC7435]  Dukhovni, V., "Opportunistic Security: Some Protection
               Most of the Time", RFC 7435, DOI 10.17487/RFC7435,
@@ -595,6 +602,24 @@ Appendix A.  Changes / Author Notes.
       Closed the "False sense of security" TODO - it was already done
       (above).
 
+      Filled in the ANA-1 and ANA-2 placeholders with the actual values.
+
+      Closed the "failure to agree on group" TODO.
+
+      Closed the "what to do if invalid elements are received" TODO.
+
+
+
+
+
+
+
+
+Harkins & Kumari         Expires April 30, 2017                [Page 11]
+
+Internet-Draft      Opportunistic Wireless Encryption       October 2016
+
+
 Authors' Addresses
 
    Dan Harkins (editor)
@@ -605,19 +630,6 @@ Authors' Addresses
 
    Phone: +1 415 555 1212
    Email: dharkins@arubanetworks.com
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari         Expires April 27, 2017                [Page 11]
-
-Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
    Warren Kumari (editor)
@@ -659,17 +671,5 @@ Internet-Draft      Opportunistic Wireless Encryption       October 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari         Expires April 27, 2017                [Page 12]
+Harkins & Kumari         Expires April 30, 2017                [Page 12]
 ```

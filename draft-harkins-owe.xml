@@ -288,7 +288,7 @@ which is available here: http://xml.resource.org. -->
 
           <c>00-0F-AC</c>
 
-          <c>ANA-1</c>
+          <c>18</c>
 
           <c>Opportunistic Wireless Encryption</c>
 
@@ -296,8 +296,6 @@ which is available here: http://xml.resource.org. -->
 
           <c><xref target="RFC5869"/></c>
         </texttable>
-
-        <t>where ANA-1 is assigned by IEEE 802.11 ANA.</t>
 
         <t>Once a client discovers an OWE-compliant AP, it performs "Open
         System" 802.11 authentication as defined in <xref
@@ -325,14 +323,12 @@ which is available here: http://xml.resource.org. -->
 | Element ID |  Length  |     ID     |   element-specific     |
 |            |          |  Extension |         data           |
 +------------+----------+------------+---------+--------------+
-|    255     | variable |   ANA-2    | group   |  public key  |
+|    255     | variable |     32     | group   |  public key  |
 +------------+----------+------------+---------+--------------+
 	  ]]></artwork>
         </figure>
 
         <t>where <list style="symbols">
-            <t>ANA-2 is assigned by IEEE 802.11 ANA;</t>
-
             <t>group is an unsigned two-octet integer defined in <xref
             target="IKE-IANA"/>, in little-endian format, that identifies a
             domain parameter set;</t>
@@ -359,8 +355,18 @@ which is available here: http://xml.resource.org. -->
         Diffie-Hellman Parameter element.</t>
 
         <t>For interoperability purposes, a compliant implementation MUST
-        support group nineteen (19), a 256-bit elliptic curve group. [ TODO:
-        what to do if the AP doesn't like the client's chosen group? ]</t>
+        support group nineteen (19), a 256-bit elliptic curve group. If the
+	AP does not support the group indicated in the received 802.11
+	association request it MUST respond with an 802.11 association
+	response with a status code of seventy-seven (77) indicating
+	an unsupported finite cyclic group. A client that receives an
+	802.11 association response with a status code of seventy-seven
+	SHOULD retry OWE with a different supported group and, due to the
+	unsecured nature of 802.11 association, MAY request association
+	again using the group which resulted in failure. This failure
+	SHOULD be logged and if the client abandons association due to
+	the failure to agree on any group, notification of this fact SHOULD
+	be provided to the user.</t>
 
         <t>Received Diffie-Hellman Parameter Elements are checked for validity
         upon receipt. For ECC, elements are checked by verifying that equation
@@ -368,8 +374,13 @@ which is available here: http://xml.resource.org. -->
         excluding the point at infinity. For FFC, elements are checked that
         they are between one (1) and one (1) less than the prime, p, exclusive
         (i.e. 1 &lt; element &lt; p-1). Invalid received Diffie-Hellman keys
-        MUST result in unsuccessful association and a failure of OWE. [ TODO:
-        Add text on what to do next. ]</t>
+        MUST result in unsuccessful association, a failure of OWE, and
+	resetting of the 802.11 state machine. Due to the unsecured nature
+	of 802.11 association a client SHOULD retry OWE a number of times
+	(which this memo does not specify). This failure SHOULD be logged
+	and if the client abandons association due to the (repeated) receipt
+	of invalid elements, notification of this fact SHOULD be provided
+        to the user.</t>
       </section>
 
       <section anchor="fwhs" title="OWE Post-Association">
@@ -483,8 +494,6 @@ which is available here: http://xml.resource.org. -->
 
       <?rfc include='reference.RFC.2119'?>
 
-      <?rfc include='reference.RFC.2629'?>
-
       <?rfc include='reference.RFC.5869'?>
 
       <reference anchor="SEC1">
@@ -556,6 +565,9 @@ which is available here: http://xml.resource.org. -->
         </list>-03 to -04:<list>
           <t>Closed the "False sense of security" TODO - it was already done
           (above).</t>
+	  <t>Filled in the ANA-1 and ANA-2 placeholders with the actual values.</t>
+	  <t>Closed the "failure to agree on group" TODO.</t>
+	  <t>Closed the "what to do if invalid elements are received" TODO.</t>
         </list></t>
     </section>
   </back>
