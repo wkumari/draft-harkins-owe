@@ -98,7 +98,7 @@ which is available here: http://xml.resource.org. -->
 
   <middle>
     <section title="Introduction">
-      <t>This memo describes a mode of opportunistic encryption <xref
+      <t>This memo describes a mode of opportunistic security <xref
       target="RFC7435"/> for 802.11 -- OWE -- that provides encryption of the
       wireless medium but no authentication.</t>
 
@@ -129,6 +129,9 @@ which is available here: http://xml.resource.org. -->
       </section>
 
       <section title="Why IETF?">
+        <t>[ RFC Editor: Please remove this entire section before publication.
+        </t>
+
         <t>The protocol described here is an extension to the IEEE 802.11
         standard and the question, naturally, arises: why do this in the
         IETF?</t>
@@ -144,8 +147,8 @@ which is available here: http://xml.resource.org. -->
         use of encryption in the Internet, even when authentication is not
         possible or practical. The IETF is a natural home for OWE.</t>
 
-        <t>[ RFC Editor, please remove: This topic has been discussed within
-        the IEEE IETF Coordination group (notes from meeting:
+        <t>This topic has been discussed within the IEEE IETF Coordination
+        group (notes from meeting:
         https://www.ietf.org/mail-archive/web/ieee-ietf-coord/current/msg00828.html),
         and within the IEEE. The IEEE has allocated codepoints for this
         technique, see:
@@ -162,9 +165,7 @@ which is available here: http://xml.resource.org. -->
       not convenient or realistic. Ideally, users would always use a VPN when
       using an untrusted network, but often they don't. This leaves their
       traffic vulnerable to sniffing attacks, for example from someone in the
-      adjacent hotel room running Wireshark, pervasive monitors, etc. [Ed
-      note: The ietf-hotel SSID is an example of an open wifi network likely
-      familiar to most readers. ]</t>
+      adjacent hotel room running Wireshark, pervasive monitors, etc.</t>
 
       <t>In addition, many businesses (for example, coffee shops and bars)
       offer free Wi-Fi as an inducement to customers to enter and remain in
@@ -189,14 +190,12 @@ which is available here: http://xml.resource.org. -->
       he can issue a forged "de-authenticate" frame that will cause the client
       and/or AP to reset the 802.11 state machine and cause them to go through
       the 4-way Handshake again thereby allowing the passive attacker to
-      determine the traffic keys. Basically, this shared and public PSK mode
-      of access is as bad as an open and unencrypted network; some would say
-      worse, as it provides users with a false sense of security.</t>
+      determine the traffic keys.</t>
 
-      <t> With OWE, the client and AP, would perform a Diffie-Hellman key
-      exchange during the access procedure and use the resulting pairwise
-      secret with the 4-way Handshake, instead of using a shared and public
-      PSK in the 4-way Handshake.</t>
+      <t>With OWE, the client and AP, perform a Diffie-Hellman key exchange
+      during the access procedure and use the resulting pairwise secret with
+      the 4-way Handshake, instead of using a shared and public PSK in the
+      4-way Handshake.</t>
 
       <t>OWE requires no special configuration or user interaction but
       provides a higher level of security than a common, shared, and public
@@ -206,10 +205,11 @@ which is available here: http://xml.resource.org. -->
     </section>
 
     <section title="802.11 Network Access">
-      <t>Wi-Fi Access Points advertise their presence through frames called
-      "beacons". These frames inform clients within earshot of the SSID the AP
-      is advertising, the AP's MAC address (known as its "BSSID"), security
-      policy governing access, which symmetric ciphers it uses for unicast and
+      <t>Wi-Fi Access Points (AP) advertise their presence through frames
+      called "beacons". These frames inform clients within earshot of the SSID
+      (Service Set Identifier) the AP is advertising, the AP's MAC address
+      (known as its "BSSID" (Basic Service Set Identifier)), security policy
+      governing access, which symmetric ciphers it uses for unicast and
       broadcast frames, QoS information, as well as support for other optional
       features of <xref target="IEEE802.11"/>. Wi-Fi clients can actively
       discover APs by issuing "probe requests" which are queries for APs that
@@ -355,18 +355,17 @@ which is available here: http://xml.resource.org. -->
         Diffie-Hellman Parameter element.</t>
 
         <t>For interoperability purposes, a compliant implementation MUST
-        support group nineteen (19), a 256-bit elliptic curve group. If the
-	AP does not support the group indicated in the received 802.11
-	association request it MUST respond with an 802.11 association
-	response with a status code of seventy-seven (77) indicating
-	an unsupported finite cyclic group. A client that receives an
-	802.11 association response with a status code of seventy-seven
-	SHOULD retry OWE with a different supported group and, due to the
-	unsecured nature of 802.11 association, MAY request association
-	again using the group which resulted in failure. This failure
-	SHOULD be logged and if the client abandons association due to
-	the failure to agree on any group, notification of this fact SHOULD
-	be provided to the user.</t>
+        support group nineteen (19), a 256-bit elliptic curve group. If the AP
+        does not support the group indicated in the received 802.11
+        association request it MUST respond with an 802.11 association
+        response with a status code of seventy-seven (77) indicating an
+        unsupported finite cyclic group. A client that receives an 802.11
+        association response with a status code of seventy-seven SHOULD retry
+        OWE with a different supported group and, due to the unsecured nature
+        of 802.11 association, MAY request association again using the group
+        which resulted in failure. This failure SHOULD be logged and if the
+        client abandons association due to the failure to agree on any group,
+        notification of this fact SHOULD be provided to the user.</t>
 
         <t>Received Diffie-Hellman Parameter Elements are checked for validity
         upon receipt. For ECC, elements are checked by verifying that equation
@@ -375,12 +374,12 @@ which is available here: http://xml.resource.org. -->
         they are between one (1) and one (1) less than the prime, p, exclusive
         (i.e. 1 &lt; element &lt; p-1). Invalid received Diffie-Hellman keys
         MUST result in unsuccessful association, a failure of OWE, and
-	resetting of the 802.11 state machine. Due to the unsecured nature
-	of 802.11 association a client SHOULD retry OWE a number of times
-	(which this memo does not specify). This failure SHOULD be logged
-	and if the client abandons association due to the (repeated) receipt
-	of invalid elements, notification of this fact SHOULD be provided
-        to the user.</t>
+        resetting of the 802.11 state machine. Due to the unsecured nature of
+        802.11 association a client SHOULD retry OWE a number of times (which
+        this memo does not specify). This failure should be logged and if the
+        client abandons association due to the (repeated) receipt of invalid
+        elements, notification of this fact should be provided to the
+        user.</t>
       </section>
 
       <section anchor="fwhs" title="OWE Post-Association">
@@ -398,7 +397,7 @@ which is available here: http://xml.resource.org. -->
         target="RFC5869"/>, NULL indicates the "salt-less" invocation of HKDF
         using the hash algorithm defined in section <xref target="crypto"/>,
         and n is the bit-length of the digest produced by that hash algorithm.
-        z and prk are irretrievably deleted once the PMK has been
+        z and prk SHOULD be irretrievably deleted once the PMK has been
         generated.</t>
 
         <t>The PMKID is generated by hashing the two Diffie-Hellman public
@@ -565,9 +564,14 @@ which is available here: http://xml.resource.org. -->
         </list>-03 to -04:<list>
           <t>Closed the "False sense of security" TODO - it was already done
           (above).</t>
-	  <t>Filled in the ANA-1 and ANA-2 placeholders with the actual values.</t>
-	  <t>Closed the "failure to agree on group" TODO.</t>
-	  <t>Closed the "what to do if invalid elements are received" TODO.</t>
+
+          <t>Filled in the ANA-1 and ANA-2 placeholders with the actual
+          values.</t>
+
+          <t>Closed the "failure to agree on group" TODO.</t>
+
+          <t>Closed the "what to do if invalid elements are received"
+          TODO.</t>
         </list></t>
     </section>
   </back>
