@@ -7,8 +7,8 @@
 Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: June 3, 2017                                             Google
-                                                       November 30, 2016
+Expires: June 4, 2017                                             Google
+                                                        December 1, 2016
 
 
                    Opportunistic Wireless Encryption
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 3, 2017.
+   This Internet-Draft will expire on June 4, 2017.
 
 Copyright Notice
 
@@ -55,9 +55,9 @@ Copyright Notice
 
 
 
-Harkins & Kumari          Expires June 3, 2017                  [Page 1]
+Harkins & Kumari          Expires June 4, 2017                  [Page 1]
 
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
    to this document.  Code Components extracted from this document must
@@ -79,8 +79,8 @@ Table of Contents
      4.3.  OWE Association . . . . . . . . . . . . . . . . . . . . .   6
      4.4.  OWE Post-Association  . . . . . . . . . . . . . . . . . .   8
      4.5.  OWE PMK Caching . . . . . . . . . . . . . . . . . . . . .   9
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-   6.  Implementation Considerations . . . . . . . . . . . . . . . .   9
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
+   6.  Implementation Considerations . . . . . . . . . . . . . . . .  10
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
@@ -111,9 +111,9 @@ Table of Contents
 
 
 
-Harkins & Kumari          Expires June 3, 2017                  [Page 2]
+Harkins & Kumari          Expires June 4, 2017                  [Page 2]
 
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
    Z = DH(x,Y)
@@ -167,9 +167,9 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
 
 
-Harkins & Kumari          Expires June 3, 2017                  [Page 3]
+Harkins & Kumari          Expires June 4, 2017                  [Page 3]
 
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
    In addition, many businesses (for example, coffee shops and bars)
@@ -223,9 +223,9 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
 
 
-Harkins & Kumari          Expires June 3, 2017                  [Page 4]
+Harkins & Kumari          Expires June 4, 2017                  [Page 4]
 
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
    After an AP is discovered by a client, actively through probing or
@@ -279,9 +279,9 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
 
 
-Harkins & Kumari          Expires June 3, 2017                  [Page 5]
+Harkins & Kumari          Expires June 4, 2017                  [Page 5]
 
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
    o  SHA-384: when 2048 < len(p) <= 3072
@@ -335,9 +335,9 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
 
 
-Harkins & Kumari          Expires June 3, 2017                  [Page 6]
+Harkins & Kumari          Expires June 4, 2017                  [Page 6]
 
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
                    The Diffie-Hellman Parameter Element
@@ -357,13 +357,17 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
       little-endian format, that identifies a domain parameter set;
 
    o  public key is an octet string representing the Diffie-Hellman
-      public key encoded according to section 2.3.3 (Elliptic Curve to
-      Octet String Conversion) or 2.3.5 (Field Element to Octet String
-      Conversion) of [SEC1] depending on whether the public key is ECC
-      or FFC, respectively; and,
+      public key; and,
 
    o  Element ID, Length, and ID Extension are all single octet integers
       in little-endian format.
+
+   The encoding of the public key depends on its type.  FFC elements
+   SHALL be encoded per the integer-to-Octet-String conversion technique
+   of [RFC6090].  For ECC elements, the encoding depends on the
+   definition of the curve, either [RFC6090] or [RFC7748].  If the
+   public key is from a curve defined in [RFC6090], compact
+   representation SHALL be used.
 
    A client wishing to do OWE MUST indicate the OWE AKM in the RSN
    element portion of the 802.11 association request, and MUST include a
@@ -384,22 +388,22 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
    unsupported finite cyclic group.  A client that receives an 802.11
    association response with a status code of seventy-seven SHOULD retry
    OWE with a different supported group and, due to the unsecured nature
+
+
+
+Harkins & Kumari          Expires June 4, 2017                  [Page 7]
+
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
+
+
    of 802.11 association, MAY request association again using the group
    which resulted in failure.  This failure SHOULD be logged and if the
    client abandons association due to the failure to agree on any group,
    notification of this fact SHOULD be provided to the user.
 
-
-
-Harkins & Kumari          Expires June 3, 2017                  [Page 7]
-
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
-
-
    Received Diffie-Hellman Parameter Elements are checked for validity
-   upon receipt.  For ECC, elements are checked by verifying that
-   equation for the curve is correct for the given x- and y-
-   coordinates, excluding the point at infinity.  For FFC, elements are
+   upon receipt.  For ECC, a validity check depends on the curve
+   definition, either [RFC6090] or [RFC7748].  For FFC, elements are
    checked that they are between one (1) and one (1) less than the
    prime, p, exclusive (i.e. 1 < element < p-1).  Invalid received
    Diffie-Hellman keys MUST result in unsuccessful association, a
@@ -420,15 +424,19 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
       z = F(DH(x, Y))
 
-      prk = HKDF-extract(NULL, z)
+      prk = HKDF-extract(C | A | group, z)
 
       PMK = HKDF-expand(prk, "OWE Key Generation", n)
 
-   Where HKDF-expand() and HKDF-extract() are defined in [RFC5869], NULL
-   indicates the "salt-less" invocation of HKDF using the hash algorithm
-   defined in section Section 4.1, and n is the bit-length of the digest
-   produced by that hash algorithm.  z and prk SHOULD be irretrievably
-   deleted once the PMK has been generated.
+   Where HKDF-expand() and HKDF-extract() are defined in [RFC5869]; "C |
+   A | group" is a concatentation of the client's Diffie-Hellman public
+   value, the AP's Diffie-Hellman public value (from the 802.11
+   Associate Request and Response, respectively), and the two-octet
+   group from the Diffie-Hellman Parameter element (in little-endian
+   format) and is passed as the salt to HKDF using the hash algorithm
+   defined in section Section 4.1; and, n is the bit-length of the
+   digest produced by that hash algorithm. z and prk SHOULD be
+   irretrievably deleted once the PMK has been generated.
 
    The PMKID is generated by hashing the two Diffie-Hellman public keys
    (the data, as sent and received, from the "public key" portion of the
@@ -437,6 +445,13 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
       PMKID = Truncate-128(Hash(C | A))
 
+
+
+Harkins & Kumari          Expires June 4, 2017                  [Page 8]
+
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
+
+
    where C is the client's Diffie-Hellman public key from the 802.11
    Association request and A is the AP's Diffie-Hellman public key from
    the 802.11 Association response, and Hash is the hash algorithm
@@ -444,14 +459,6 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
 
    Upon completion of 802.11 association, the AP initiates the 4-way
    Handshake to the client using the PMK generated above.  The result of
-
-
-
-Harkins & Kumari          Expires June 3, 2017                  [Page 8]
-
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
-
-
    the 4-way Handshake is encryption keys to protect bulk unicast data
    and broadcast data.
 
@@ -489,6 +496,18 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
    frame for which it did not include a PMKID in the corresponding
    802.11 association request frame.
 
+
+
+
+
+
+
+
+Harkins & Kumari          Expires June 4, 2017                  [Page 9]
+
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
+
+
 5.  IANA Considerations
 
    This memo includes no request to IANA.
@@ -500,13 +519,6 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
    the available SSID to users should not include special security
    symbols such as a "lock icon".  To a user, an OWE SSID is the same as
    "Open", it simply provides more security behind the scenes.
-
-
-
-Harkins & Kumari          Expires June 3, 2017                  [Page 9]
-
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
-
 
 7.  Security Considerations
 
@@ -543,26 +555,29 @@ Internet-Draft      Opportunistic Wireless Encryption      November 2016
               2005, <http://www.iana.org/assignments/ikev2-parameters/
               ikev2-parameters.xhtml#ikev2-parameters-8>.
 
+
+
+
+
+Harkins & Kumari          Expires June 4, 2017                 [Page 10]
+
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
-              RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869, DOI 10.17487/
               RFC5869, May 2010,
               <http://www.rfc-editor.org/info/rfc5869>.
 
-   [SEC1]     Brown, D., "Elliptic Curve Cryptography", Version 2.0,
-              2009.
+   [RFC6090]  McGrew, D., Igoe, K., and M. Salter, "Fundamental Elliptic
+              Curve Cryptography Algorithms", RFC 6090, February 2011.
 
-
-
-
-Harkins & Kumari          Expires June 3, 2017                 [Page 10]
-
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
-
+   [RFC7748]  Langley, A., Hamburg, M., and S. Turner, "Elliptic Curves
+              for Security", RFC 7748, DOI 10.17487/RFC7748, January
+              2016, <http://www.rfc-editor.org/info/rfc7748>.
 
 8.2.  Informative References
 
@@ -597,6 +612,14 @@ Appendix A.  Changes / Author Notes.
 
       Added "Why IETF?"
 
+
+
+
+Harkins & Kumari          Expires June 4, 2017                 [Page 11]
+
+Internet-Draft      Opportunistic Wireless Encryption      December 2016
+
+
    -03 to -04:
 
       Closed the "False sense of security" TODO - it was already done
@@ -608,17 +631,14 @@ Appendix A.  Changes / Author Notes.
 
       Closed the "what to do if invalid elements are received" TODO.
 
+      Closed the "is [SEC1] a good and stable reference?" comment.
 
+      Closed the "what about curve25519?" comment.
 
+      Closed the "should the group be included in PMK derivation?
+      comment.
 
-
-
-
-
-Harkins & Kumari          Expires June 3, 2017                 [Page 11]
-
-Internet-Draft      Opportunistic Wireless Encryption      November 2016
-
+      Closed the issue regarding validity checks for curve25519.
 
 Authors' Addresses
 
@@ -651,25 +671,5 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Harkins & Kumari          Expires June 3, 2017                 [Page 12]
+Harkins & Kumari          Expires June 4, 2017                 [Page 12]
 ```
