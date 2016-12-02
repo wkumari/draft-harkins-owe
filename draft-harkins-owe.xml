@@ -27,7 +27,7 @@ which is available here: http://xml.resource.org. -->
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-04" ipr="trust200902">
+<rfc category="info" docName="draft-harkins-owe-05" ipr="trust200902">
   <front>
     <title>Opportunistic Wireless Encryption</title>
 
@@ -570,6 +570,7 @@ which is available here: http://xml.resource.org. -->
 
           <t>Closed the "failure to agree on group" TODO.</t>
 
+	</list>04 to -05:<list>
           <t>Closed the "what to do if invalid elements are received"
           TODO.</t>
 	  <t>Closed the "is [SEC1] a good and stable reference?" comment.</t>

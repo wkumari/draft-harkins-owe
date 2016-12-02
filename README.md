@@ -7,12 +7,12 @@
 Network Working Group                                    D. Harkins, Ed.
 Internet-Draft                                             HP Enterprise
 Intended status: Informational                            W. Kumari, Ed.
-Expires: June 4, 2017                                             Google
-                                                        December 1, 2016
+Expires: June 5, 2017                                             Google
+                                                        December 2, 2016
 
 
                    Opportunistic Wireless Encryption
-                          draft-harkins-owe-04
+                          draft-harkins-owe-05
 
 Abstract
 
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 4, 2017.
+   This Internet-Draft will expire on June 5, 2017.
 
 Copyright Notice
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 1]
+Harkins & Kumari          Expires June 5, 2017                  [Page 1]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -111,7 +111,7 @@ Table of Contents
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 2]
+Harkins & Kumari          Expires June 5, 2017                  [Page 2]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -167,7 +167,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 3]
+Harkins & Kumari          Expires June 5, 2017                  [Page 3]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -223,7 +223,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 4]
+Harkins & Kumari          Expires June 5, 2017                  [Page 4]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -279,7 +279,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 5]
+Harkins & Kumari          Expires June 5, 2017                  [Page 5]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -335,7 +335,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 6]
+Harkins & Kumari          Expires June 5, 2017                  [Page 6]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -391,7 +391,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 7]
+Harkins & Kumari          Expires June 5, 2017                  [Page 7]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -447,7 +447,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 8]
+Harkins & Kumari          Expires June 5, 2017                  [Page 8]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -503,7 +503,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                  [Page 9]
+Harkins & Kumari          Expires June 5, 2017                  [Page 9]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -559,7 +559,7 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
 
 
-Harkins & Kumari          Expires June 4, 2017                 [Page 10]
+Harkins & Kumari          Expires June 5, 2017                 [Page 10]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -615,7 +615,7 @@ Appendix A.  Changes / Author Notes.
 
 
 
-Harkins & Kumari          Expires June 4, 2017                 [Page 11]
+Harkins & Kumari          Expires June 5, 2017                 [Page 11]
 
 Internet-Draft      Opportunistic Wireless Encryption      December 2016
 
@@ -628,6 +628,8 @@ Internet-Draft      Opportunistic Wireless Encryption      December 2016
       Filled in the ANA-1 and ANA-2 placeholders with the actual values.
 
       Closed the "failure to agree on group" TODO.
+
+   04 to -05:
 
       Closed the "what to do if invalid elements are received" TODO.
 
@@ -669,7 +671,5 @@ Authors' Addresses
 
 
 
-
-
-Harkins & Kumari          Expires June 4, 2017                 [Page 12]
+Harkins & Kumari          Expires June 5, 2017                 [Page 12]
 ```
