@@ -27,7 +27,7 @@ which is available here: http://xml.resource.org. -->
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-05" ipr="trust200902">
+<rfc category="info" docName="draft-harkins-owe-06" ipr="trust200902">
   <front>
     <title>Opportunistic Wireless Encryption</title>
 
@@ -77,7 +77,7 @@ which is available here: http://xml.resource.org. -->
       </address>
     </author>
 
-    <date year="2016"/>
+    <date year="2017"/>
 
     <area>ART</area>
 
@@ -269,9 +269,9 @@ which is available here: http://xml.resource.org. -->
 
       <section anchor="discovery" title="OWE Discovery">
         <t>An access point advertises support for OWE using an Authentication
-        and Key Management (AKM) suite identifier for OWE. This AKM is
-        illustrated in <xref target="akm"/> and is added to the RSN Element in
-        all beacons and probe responses that the AP issues.</t>
+        and Key Management (AKM) suite selector for OWE. This AKM is
+        illustrated in <xref target="akm"/> and is added to the RSN element in
+        all Beacons and Probe Response frames that the AP issues.</t>
 
         <texttable anchor="akm" title="OWE AKM">
           <preamble>OWE AKM</preamble>
@@ -320,7 +320,7 @@ which is available here: http://xml.resource.org. -->
 
           <artwork align="center"><![CDATA[
 +------------+----------+------------+------------------------+
-| Element ID |  Length  |     ID     |   element-specific     |
+| Element ID |  Length  | Element ID |   element-specific     |
 |            |          |  Extension |         data           |
 +------------+----------+------------+---------+--------------+
 |    255     | variable |     32     | group   |  public key  |
@@ -424,7 +424,8 @@ which is available here: http://xml.resource.org. -->
         <t>Upon completion of 802.11 association, the AP initiates the 4-way
         Handshake to the client using the PMK generated above. The result of
         the 4-way Handshake is encryption keys to protect bulk unicast data
-        and broadcast data.</t>
+        and broadcast data. If the 4-way Handshake fails this information
+	SHOULD be presented to the user.</t>
       </section>
 
       <section anchor="caching" title="OWE PMK Caching">
@@ -472,6 +473,14 @@ which is available here: http://xml.resource.org. -->
       available SSID to users should not include special security symbols such
       as a "lock icon". To a user, an OWE SSID is the same as "Open", it
       simply provides more security behind the scenes.</t>
+      <t>When OWE is initially deployed as a replacement for an existing
+      network that uses "Open" authentication or a shared and public PSK
+      it will be necessary to create an additional Basic Service Set
+      identifier (BSSID) or a new Extended Service Set (ESS) with a
+      separate Service Set Identifier (SSID) for OWE so two distinct 802.11
+      networks can exist on the same Access Point (see
+      <xref target="IEEE802.11"/>). This arrangement should remain until
+      the majority of users have switched over to OWE.</t>
     </section>
 
     <section anchor="Security" title="Security Considerations">
@@ -480,6 +489,10 @@ which is available here: http://xml.resource.org. -->
       versa. They will share pairwise traffic encryption keys and have a
       cryptographic assurance that a frame claimed to be from the peer is
       actually from the peer and was not modified in flight.</t>
+
+      <t>OWE only secures data sent over the wirless medium and does not
+      provide security for end-to-end traffic. Users should still use
+      application-level security for achieve security end-to-end.</t>
 
       <t>OWE is susceptible to an active attack in which an adversary
       impersonates an Access Point, induces a client to connect to it via OWE
@@ -518,11 +531,11 @@ which is available here: http://xml.resource.org. -->
             <organization>IEEE Computer Society</organization>
           </author>
 
-          <date year="2012"/>
+          <date year="2016"/>
         </front>
 
         <seriesInfo name="      Part 11: Wireless LAN Medium Access Control (MAC) and Physical       Layer (PHY) Specifications"
-                    value="IEEE Std 802.11-2012"/>
+                    value="IEEE Std 802.11-2016"/>
       </reference>
 
       <reference anchor="IKE-IANA"
@@ -570,13 +583,26 @@ which is available here: http://xml.resource.org. -->
 
           <t>Closed the "failure to agree on group" TODO.</t>
 
-	</list>04 to -05:<list>
+	</list>-04 to -05:<list>
           <t>Closed the "what to do if invalid elements are received"
           TODO.</t>
 	  <t>Closed the "is [SEC1] a good and stable reference?" comment.</t>
 	  <t>Closed the "what about curve25519?" comment.</t>
 	  <t>Closed the "should the group be included in PMK derivation? comment.</t>
 	  <t>Closed the issue regarding validity checks for curve25519.</t>
+	</list>-05 to -06:<list>
+	  <t>Changed 802.11 reference to -2016 since that just came out.</t>
+	  <t>Added note in Security Considerations on end-to-end security (Lucy
+	  Young comment).</t>
+	  <t>Added note about using a 2nd BSSID or SSID when transitioning to OWE
+	  (Mahesh Jethanandani comment).</t>
+	  <t>Added note about alerting the user to a failure of the 4-way Handshake
+	  (Mahesh Jethanandani comment).</t>
+	  <t>s/suite identifier/suite selector/ in 4.2 (Robert Stacey comment).</t>
+	  <t>3rd column in Figure 1 should be "Element ID Extension" (Robert
+	  Stacey comment).</t>
+	  <t>Conformed to IEEE 802.11 style wrt capitalization in 4.2 (Robert
+	  Stacey comment).</t>
         </list></t>
     </section>
   </back>
