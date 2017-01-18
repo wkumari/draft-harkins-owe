@@ -593,7 +593,7 @@ which is available here: http://xml.resource.org. -->
 	</list>-05 to -06:<list>
 	  <t>Changed 802.11 reference to -2016 since that just came out.</t>
 	  <t>Added note in Security Considerations on end-to-end security (Lucy
-	  Young comment).</t>
+	  Yong comment).</t>
 	  <t>Added note about using a 2nd BSSID or SSID when transitioning to OWE
 	  (Mahesh Jethanandani comment).</t>
 	  <t>Added note about alerting the user to a failure of the 4-way Handshake

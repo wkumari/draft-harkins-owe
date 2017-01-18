@@ -661,7 +661,7 @@ Internet-Draft      Opportunistic Wireless Encryption       January 2017
       Changed 802.11 reference to -2016 since that just came out.
 
       Added note in Security Considerations on end-to-end security (Lucy
-      Young comment).
+      Yong comment).
 
       Added note about using a 2nd BSSID or SSID when transitioning to
       OWE (Mahesh Jethanandani comment).
