@@ -27,7 +27,7 @@ which is available here: http://xml.resource.org. -->
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-harkins-owe-06" ipr="trust200902">
+<rfc category="info" docName="draft-harkins-owe-07" ipr="trust200902">
   <front>
     <title>Opportunistic Wireless Encryption</title>
 
@@ -219,7 +219,7 @@ which is available here: http://xml.resource.org. -->
       <t>After an AP is discovered by a client, actively through probing or
       passively through beacons, the client initiates a two-step method to
       gain network access. The first step is "802.11 authentication". For most
-      methods of access (SAE being the exception), this is an empty exchange
+      methods of access, this is an empty exchange
       known as "Open Authentication-- basically the client says, "authenticate
       me", and the AP responds "ok, you're authenticated". After 802.11
       authentication is 802.11 association, in which the client requests
@@ -337,7 +337,7 @@ which is available here: http://xml.resource.org. -->
             public key; and,</t>
 
             <t>Element ID, Length, and ID Extension are all single octet
-            integers in little-endian format.</t>
+            integers.</t>
           </list></t>
 
 	<t>The encoding of the public key depends on its type. FFC elements
@@ -401,8 +401,8 @@ which is available here: http://xml.resource.org. -->
           </list>
 	Where HKDF-expand() and HKDF-extract() are defined in
 	<xref target="RFC5869"/>; "C | A | group" is a concatentation of
-	the client's Diffie-Hellman public value, the AP's Diffie-Hellman
-	public value (from the 802.11 Associate Request and Response,
+	the client's Diffie-Hellman public key, the AP's Diffie-Hellman
+	public key (from the 802.11 Associate Request and Response,
 	respectively), and the two-octet group from the Diffie-Hellman
 	Parameter element (in little-endian format) and is passed as the
 	salt to HKDF using the hash algorithm defined in section
@@ -562,7 +562,7 @@ which is available here: http://xml.resource.org. -->
     </references>
 
     <section title="Changes / Author Notes.">
-      <t>[ RFC Editor: Please remove this section befor publication ]</t>
+      <t>[ RFC Editor: Please remove this section before publication ]</t>
 
       <t>-00: <list>
           <t>Initial version.</t>
@@ -603,7 +603,12 @@ which is available here: http://xml.resource.org. -->
 	  Stacey comment).</t>
 	  <t>Conformed to IEEE 802.11 style wrt capitalization in 4.2 (Robert
 	  Stacey comment).</t>
-        </list></t>
+        </list>-06 to -07:<list>
+	  <t>Removed mention of single octet fields being in little endian.</t>
+	  <t>Removed parenthetical mention of SAE.</t>
+	  <t>changed "pubic value" to "public key" for consistency and clarity.</t>
+        </list>
+       </t>
     </section>
   </back>
 </rfc>
